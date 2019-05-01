@@ -1,14 +1,12 @@
-#include <iostream>
-#include <ctime>
+#include "keyboard_listener.h"
 
 int main() 
 {
-  int count = 0;
-  int start = std::time(nullptr);
+  roadrun::KeyboardListener *p = new roadrun::KeyboardListener();
 
-  while(std::time(nullptr) != start + 1)
-  {
-    std::cout << count++ << std::endl;
-  }
-    std::cout << "Hello Easy C++ project!" << std::endl;
+  p->ListenForKeys();
+
+  delete p;
+
+  return 0;
 }
