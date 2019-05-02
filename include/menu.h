@@ -7,6 +7,10 @@
 
 #include <ncurses.h>
 
+
+namespace roadrun
+{
+
 template <typename T>
 
 class Menu
@@ -14,5 +18,5 @@ class Menu
 public:
   virtual T PrintMenu() = 0;
 };
-
+} // namespace roadrun
 #endif

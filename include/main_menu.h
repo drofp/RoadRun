@@ -2,16 +2,16 @@
 #define MAIN_MENU_H_
 
 #include "menu.h"
-#include "settings_item.h"
+#include "menu_item.h"
 
-namespace roadrun {
-class MainMenu
+namespace roadrun 
+{
+class MainMenu : public Menu<MenuItem>
 {
 public:
-  MainMenu();
-  void ListenForKeys();
+  MenuItem PrintMenu();
 private:
-  SettingsItem current_choice;
+  MenuItem current_choice;
 };
 } // namespace roadrun
 
