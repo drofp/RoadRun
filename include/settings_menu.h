@@ -10,7 +10,8 @@ class SettingsMenu : public Menu<SettingsItem>
 {
 public:
   SettingsMenu() : current_choice(SettingsItem::kRegular) { }
-  SettingsItem PrintMenu();
+  void PrintMenu();
+  SettingsItem GetUserChoice();
 private:
   void RenderOptions(WINDOW *menu_win, int highlight);
   SettingsItem current_choice;

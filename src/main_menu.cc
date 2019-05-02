@@ -31,7 +31,7 @@ namespace roadrun
   wrefresh(menu_win);
   }
 
-  MenuItem MainMenu::PrintMenu()
+  void MainMenu::PrintMenu()
   {
 
     endwin();
@@ -60,8 +60,8 @@ namespace roadrun
       case KEY_UP:
         if(highlight == 1)
             highlight = 3;
-          else
-            --highlight;
+        else
+          --highlight;
           break;
       case KEY_DOWN:
         if(highlight == 3)
@@ -78,6 +78,7 @@ namespace roadrun
         refresh();
         break;
       }
+      current_choice = menu_item_list[highlight - 1];
       RenderOptions(menu_win, highlight);
     }	
     // mvprintw(23, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
@@ -86,9 +87,9 @@ namespace roadrun
     sleep(2);
     endwin();
   }
-} // namespace roadrun
 
-namespace roadrun 
-{
-
+  MenuItem MainMenu::GetUserChoice()
+  {
+    return current_choice;
+  }
 } // namespace roadrun

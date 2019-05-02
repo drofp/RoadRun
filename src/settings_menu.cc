@@ -31,7 +31,7 @@ namespace roadrun
   wrefresh(menu_win);
   }
 
-  SettingsItem SettingsMenu::PrintMenu()
+  void SettingsMenu::PrintMenu()
   {
 
     endwin();
@@ -78,12 +78,18 @@ namespace roadrun
         refresh();
         break;
       }
+      current_choice = settings_item_list[highlight - 1];
       RenderOptions(menu_win, highlight);
-    }	
+    }
     // mvprintw(23, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
     clrtoeol();
     refresh();
     sleep(2);
     endwin();
+  }
+
+  SettingsItem SettingsMenu::GetUserChoice()
+  {
+    return current_choice;
   }
 } // namespace roadrun

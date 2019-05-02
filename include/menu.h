@@ -14,7 +14,8 @@ template <typename T>
 class Menu
 {
 public:
-  virtual T PrintMenu() = 0;
+  virtual void PrintMenu() = 0;
+  virtual T GetUserChoice() = 0;
   const int kHeight = 10;
   const int kWidth = 20;
 private:

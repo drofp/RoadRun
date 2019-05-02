@@ -31,7 +31,7 @@ inline ostream &operator<<(ostream &ostr, const roadrun::MenuItem option)
       ostr << "Start Game";
       break;
     case roadrun::MenuItem::kChooseDifficulty:
-      ostr << "Choose Difficulty";
+      ostr << "Options";
       break;
     case roadrun::MenuItem::kExit:
       ostr << "Exit";
