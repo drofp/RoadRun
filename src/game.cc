@@ -25,21 +25,50 @@ Game::Game(int height, int width, char player_icon)
   
   // nodelay(stdscr, true);
   nodelay(game_win, true);
-  keypad(game_win, 0);
+  keypad(game_win, true);
   refresh();
 }
 
 void Game::PlayGame()
 {
-  // wattron(game_win, A_NORMAL);
-  // wattroff(game_win, A_NORMAL);
+  bool playing = true;
 
-  key = wgetch(game_win);
-  mvprintw(10, 10, "key is %d", key);
-  refresh();
-  sleep_for(milliseconds(2000));
+  while (playing)
+  {
+    key = wgetch(game_win);
+
+    switch (key)
+    {
+    case KEY_LEFT:
+      mvwprintw(game_win, 10, 10, "left!");
+      wrefresh(game_win);
+      // sleep_for(milliseconds(500));
+      player_locx--;
+      break;
+    case KEY_RIGHT:
+      mvwprintw(game_win, 10, 10, "right!");
+      wrefresh(game_win);
+      // sleep_for(milliseconds(500));
+      player_locx++;
+      break;
+    case 'q':
+      playing = false;
+      mvwprintw(game_win, 10, 10, "quit!");
+      wrefresh(game_win);
+      // sleep_for(milliseconds(500));
+      break;
+    default:
+      break;
+    }
+
+    PrintFrame(game_win, player_locy, player_locx);
+  }
   
-  PrintFrame(game_win, player_locy, player_locx);
+  // mvprintw(10, 10, "key is %d", key);
+  // refresh();
+  // sleep_for(milliseconds(2000));
+  
+  // PrintFrame(game_win, player_locy, player_locx);
   clrtoeol();
   wrefresh(game_win);
   endwin();
@@ -47,10 +76,12 @@ void Game::PlayGame()
 
 void Game::PrintFrame(WINDOW *game_win, int player_locy, int player_locx)
 {
+  wmove(game_win, player_locy, 0);
+  wclrtoeol(game_win);
   mvwprintw(game_win, player_locy, player_locx, "%c", player_icon);
-  // mvwprintw(game_win, player_locx, player_locx, "sah dood^");
+  
   wrefresh(game_win);
-  sleep_for(milliseconds(2000));
+  // sleep_for(milliseconds(500));
 }
 
 } // namespace roadrun

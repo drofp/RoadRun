@@ -3,8 +3,8 @@
 
 int main() 
 {
-  int height = 30;
-  int width = 60;
+  int height = 40;
+  int width = 80;
   char player_icon = '^';
   roadrun::Game *g = new roadrun::Game(height, width, player_icon);
   g->PlayGame();
