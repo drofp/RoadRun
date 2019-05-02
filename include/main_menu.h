@@ -9,8 +9,10 @@ namespace roadrun
 class MainMenu : public Menu<MenuItem>
 {
 public:
+  MainMenu() : current_choice(MenuItem::kExit) { }
   MenuItem PrintMenu();
 private:
+  void RenderOptions(int hightlight);
   MenuItem current_choice;
 };
 } // namespace roadrun

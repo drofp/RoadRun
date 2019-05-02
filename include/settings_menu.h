@@ -6,11 +6,13 @@
 
 namespace roadrun 
 {
-class MainMenu : public Menu<SettingsItem>
+class SettingsMenu : public Menu<SettingsItem>
 {
 public:
+  SettingsMenu() : current_choice(SettingsItem::kRegular) { }
   SettingsItem PrintMenu();
 private:
+  void RenderOptions(WINDOW *menu_win, int highlight);
   SettingsItem current_choice;
 };
 } // namespace roadrun

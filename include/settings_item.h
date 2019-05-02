@@ -1,6 +1,7 @@
 #ifndef SETTINGS_ITEM_H_
 #define SETTINGS_ITEM_H_
 
+#include "string.h"
 #include <ostream>
 
 using namespace std;
@@ -37,6 +38,27 @@ inline ostream &operator<<(ostream &ostr, const roadrun::SettingsItem option)
       break;
   }
   return ostr;
+}
+
+inline char* SettingToString(char **arr, roadrun::SettingsItem choice)
+{
+  int mode = static_cast<int>(choice);
+  return arr[mode];
+  // string mode;
+  // switch (choice)
+  // {
+  // case roadrun::SettingsItem::kRegular:
+  //   mode = "Regular Mode";
+  //   break;
+  // case roadrun::SettingsItem::kLudicrous:
+  //   mode = "Ludicrous Mode";  
+  //   break;
+  // default:
+  //   mode = "Ron Mak";  
+  //   break;
+  // }
+  // char result[20];
+  // strcpy(result, mode.c_str());
 }
 
 #endif

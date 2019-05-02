@@ -1,13 +1,9 @@
-#include "keyboard_listener.h"
+#include "settings_menu.h"
+#include "settings_item.h"
 
 int main() 
 {
-  roadrun::KeyboardListener *p = new roadrun::KeyboardListener();
-
-  p->ListenForKeys();
-  p->ListenForKeys();
-
-  delete p;
-
+  roadrun::SettingsMenu *p = new roadrun::SettingsMenu();
+  p->PrintMenu();
   return 0;
 }
