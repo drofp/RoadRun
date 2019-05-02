@@ -2,6 +2,7 @@
 #define KEYBOARD_LISTENER_H_
 
 #include <termios.h>
+#include <unistd.h>
 #include <iostream>
 
 #include <ncurses.h>

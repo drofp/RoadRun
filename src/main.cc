@@ -5,6 +5,7 @@ int main()
   roadrun::KeyboardListener *p = new roadrun::KeyboardListener();
 
   p->ListenForKeys();
+  p->ListenForKeys();
 
   delete p;
 
