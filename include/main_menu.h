@@ -12,7 +12,7 @@ public:
   MainMenu() : current_choice(MenuItem::kExit) { }
   MenuItem PrintMenu();
 private:
-  void RenderOptions(int hightlight);
+  void RenderOptions(WINDOW *menu_win, int hightlight);
   MenuItem current_choice;
 };
 } // namespace roadrun

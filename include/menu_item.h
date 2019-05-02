@@ -43,4 +43,11 @@ inline ostream &operator<<(ostream &ostr, const roadrun::MenuItem option)
   return ostr;
 }
 
+
+inline char* MenuItemToString(char **arr, roadrun::MenuItem choice)
+{
+  int mode = static_cast<int>(choice);
+  return arr[mode];
+}
+
 #endif
