@@ -1,25 +1,18 @@
-#ifndef KEYBOARD_LISTENER_H_
-#define KEYBOARD_LISTENER_H_
+#ifndef MAIN_MENU_H_
+#define MAIN_MENU_H_
 
-#include <termios.h>
-#include <unistd.h>
-#include <iostream>
-
-#include <ncurses.h>
+#include "menu.h"
 #include "settings_item.h"
 
 namespace roadrun {
-class KeyboardListener
+class MainMenu
 {
 public:
-  KeyboardListener() : up_count(0), down_count(0), left_count(0), right_count(0) { }
+  MainMenu();
   void ListenForKeys();
 private:
-  int up_count;
-  int down_count;
-  int left_count;
-  int right_count;
+  SettingsItem current_choice;
 };
-}
+} // namespace roadrun
 
 #endif
