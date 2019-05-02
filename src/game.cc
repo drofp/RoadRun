@@ -18,6 +18,7 @@ Game::Game(int height, int width, char player_icon)
   clear();
   noecho();
   cbreak(); /* Line buffering disabled. pass on everything */
+  curs_set(0); // hide cursor
 
   game_win = newwin(height, width, starty, startx);
   // cout << "newwin(height, width, starty, startx) = " << "(" << height << 
