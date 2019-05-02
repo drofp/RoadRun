@@ -19,7 +19,7 @@ static const SettingsItem settings_item_list[] =
   SettingsItem::kRegular,
   SettingsItem::kLudicrous
 };
-static const int num_settings_item = 2;
+static const int num_settings_items = 2;
 } // namespace roadrun
 
 inline ostream &operator<<(ostream &ostr, const roadrun::SettingsItem option)

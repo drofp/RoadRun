@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include <ncurses.h>
+#include "settings_item.h"
 
 namespace roadrun {
 class KeyboardListener
