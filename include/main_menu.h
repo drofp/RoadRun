@@ -9,12 +9,15 @@ namespace roadrun
 class MainMenu : public Menu<MenuItem>
 {
 public:
-  MainMenu() : current_choice(MenuItem::kStartGame) { }
+  MainMenu(int width, int height) : current_choice(MenuItem::kStartGame),
+    kWidth(width), kHeight(height) { }
   void PrintMenu();
   MenuItem GetUserChoice();
 private:
   void RenderOptions(WINDOW *menu_win, int hightlight);
   MenuItem current_choice;
+  const int kWidth;
+  const int kHeight;
 };
 } // namespace roadrun
 

@@ -1,12 +1,10 @@
-#include <iostream>
-
-#include "game.h"
+#include "game_environment.h"
 
 int main() 
 {
-  int height = 40;
-  int width = 80;
-  char player_icon = '^';
-  roadrun::Game *g = new roadrun::Game(height, width, player_icon);
-  g->PlayGame();
+  roadrun::GameEnvironment *game = new roadrun::GameEnvironment();
+  game->PlayGame();
+
+  delete game;
+  return 0;
 }
