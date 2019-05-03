@@ -16,8 +16,6 @@ int main()
     p->PrintMenu();
     roadrun::MenuItem meme = p->GetUserChoice();
 
-    std::cout << meme << std::endl;
-    sleep(1);
     if(meme == roadrun::MenuItem::kChooseDifficulty)
     {
       d->PrintMenu();

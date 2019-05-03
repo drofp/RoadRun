@@ -84,7 +84,6 @@ namespace roadrun
     // mvprintw(23, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
     clrtoeol();
     refresh();
-    sleep(2);
     endwin();
   }
 
