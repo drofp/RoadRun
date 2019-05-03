@@ -2,8 +2,9 @@
 
 namespace roadrun
 {
-MapGenerator* MapGeneratorFactory::create()
+MapGenerator* MapGeneratorFactory::create(string choice)
 {
-  return new MapGeneratorEasy();
+  if (choice == "easy") return new MapGeneratorEasy();
+  else if (choice == "hard") return new MapGeneratorHard();
 }
 } // namespace roadrun
