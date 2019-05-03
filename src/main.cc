@@ -1,14 +1,36 @@
-#include <iostream>
-#include <ctime>
+#include "settings_menu.h"
+#include "settings_item.h"
+#include "menu_item.h"
+#include "main_menu.h"
 
 int main() 
 {
-  int count = 0;
-  int start = std::time(nullptr);
+  roadrun::MenuItem meme = roadrun::MenuItem::kStartGame;
+  
+  roadrun::MainMenu *p = new roadrun::MainMenu();
+  roadrun::SettingsMenu *d = new roadrun::SettingsMenu();
 
-  while(std::time(nullptr) != start + 1)
+  // this can change
+  while(1)
   {
-    std::cout << count++ << std::endl;
+    p->PrintMenu();
+    roadrun::MenuItem meme = p->GetUserChoice();
+
+    if(meme == roadrun::MenuItem::kChooseDifficulty)
+    {
+      d->PrintMenu();
+      roadrun::SettingsItem meme = d->GetUserChoice();
+    } 
+    else if (meme == roadrun::MenuItem::kStartGame)
+    {
+      // go don
+    }
+    else 
+    {
+      break;
+    }
   }
-    std::cout << "Hello Easy C++ project!" << std::endl;
+
+
+  return 0;
 }
