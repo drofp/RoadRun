@@ -2,7 +2,7 @@
 
 namespace roadrun
 {
-MapGenerator* MapGeneratorFactory::create(string choice)
+MapGenerator* MapGeneratorFactory::create(std::string choice)
 {
   if (choice == "easy") return new MapGeneratorEasy();
   else if (choice == "hard") return new MapGeneratorHard();

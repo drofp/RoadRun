@@ -12,7 +12,7 @@ namespace roadrun
 class MapGeneratorFactory
 {
 public:
-  static MapGenerator* create(string choice);
+  static MapGenerator* create(std::string choice);
 };
 } // namespace roadrun
 
