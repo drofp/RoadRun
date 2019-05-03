@@ -6,6 +6,7 @@
 
 #include <ncurses.h>
 #include "map_generator_factory.h"
+#include "settings_item.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class Game
 {
 public:
   Game(int width, int height, char player_icon);
-  void PlayGame();
+  void PlayGame(SettingsItem difficulty);
 
   char GetPlayerIcon();
   void SetPlayerIcon();

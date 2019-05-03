@@ -6,13 +6,14 @@
 #include "map_generator.h"
 #include "map_generator_easy.h"
 #include "map_generator_hard.h"
+#include "settings_item.h"
 
 namespace roadrun
 {
 class MapGeneratorFactory
 {
 public:
-  static MapGenerator* create(std::string choice);
+  static MapGenerator* create(SettingsItem difficulty);
 };
 } // namespace roadrun
 

@@ -31,7 +31,7 @@ Game::Game(int width, int height, char player_icon)
   refresh();
 }
 
-void Game::PlayGame()
+void Game::PlayGame(SettingsItem difficulty)
 {
   bool playing = true;
 

@@ -26,11 +26,11 @@ namespace roadrun
       if(meme == roadrun::MenuItem::kChooseDifficulty)
       {
         settings_menu->PrintMenu();
-        roadrun::SettingsItem meme = settings_menu->GetUserChoice();
+        difficulty = settings_menu->GetUserChoice();
       } 
       else if (meme == roadrun::MenuItem::kStartGame)
       {
-        
+        game->PlayGame(difficulty);
       }
       else 
       {
