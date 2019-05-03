@@ -9,12 +9,15 @@ namespace roadrun
 class SettingsMenu : public Menu<SettingsItem>
 {
 public:
-  SettingsMenu() : current_choice(SettingsItem::kRegular) { }
+  SettingsMenu(int width, int height) : current_choice(SettingsItem::kRegular),
+  kWidth(width), kHeight(height) { }
   void PrintMenu();
   SettingsItem GetUserChoice();
 private:
   void RenderOptions(WINDOW *menu_win, int highlight);
   SettingsItem current_choice;
+  const int kWidth;
+  const int kHeight;
 };
 } // namespace roadrun
 
