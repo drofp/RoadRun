@@ -5,7 +5,6 @@
 #include <iostream>
 
 #include <ncurses.h>
-
 #include "map_generator_factory.h"
 
 using namespace std;
