@@ -24,13 +24,19 @@ public:
   void SetPlayerIcon();
 private:
   WINDOW *game_win;
+  int height;
+  int width;
+
   char player_icon;
   int player_locy;
   int player_locx;
+  int player_deltax;
   int key;
 
   void PrintFrame(WINDOW *game_win, int player_locy, int player_locx);
   void UpdatePlayerLoc();
+  void UpdatePlayerDeltas();
+  bool kbhit();
 };
 } // namespace roadrun
 
