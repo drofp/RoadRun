@@ -14,7 +14,7 @@ namespace roadrun
 class Game
 {
 public:
-  Game(int height, int width, char player_icon);
+  Game(int width, int height, char player_icon);
   void PlayGame();
 
   char GetPlayerIcon();

@@ -2,7 +2,7 @@
 
 namespace roadrun
 {
-Game::Game(int height, int width, char player_icon)
+Game::Game(int width, int height, char player_icon)
 {
   int starty = 0;
   int startx = 0;
