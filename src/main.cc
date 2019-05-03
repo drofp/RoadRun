@@ -1,36 +1,12 @@
-#include "settings_menu.h"
-#include "settings_item.h"
-#include "menu_item.h"
-#include "main_menu.h"
+#include <iostream>
+
+#include "game.h"
 
 int main() 
 {
-  roadrun::MenuItem meme = roadrun::MenuItem::kStartGame;
-  
-  roadrun::MainMenu *p = new roadrun::MainMenu();
-  roadrun::SettingsMenu *d = new roadrun::SettingsMenu();
-
-  // this can change
-  while(1)
-  {
-    p->PrintMenu();
-    roadrun::MenuItem meme = p->GetUserChoice();
-
-    if(meme == roadrun::MenuItem::kChooseDifficulty)
-    {
-      d->PrintMenu();
-      roadrun::SettingsItem meme = d->GetUserChoice();
-    } 
-    else if (meme == roadrun::MenuItem::kStartGame)
-    {
-      // go don
-    }
-    else 
-    {
-      break;
-    }
-  }
-
-
-  return 0;
+  int height = 40;
+  int width = 80;
+  char player_icon = '^';
+  roadrun::Game *g = new roadrun::Game(height, width, player_icon);
+  g->PlayGame();
 }
