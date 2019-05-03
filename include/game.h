@@ -5,12 +5,10 @@
 #include <iostream>
 
 #include <ncurses.h>
-#include <chrono>
-#include <thread>
+
+#include "map_generator_factory.h"
 
 using namespace std;
-using namespace std::this_thread; // sleep_for, sleep_until
-using namespace std::chrono;      // nanoseconds, system_clock, seconds
 
 namespace roadrun
 {
@@ -32,6 +30,8 @@ private:
   int player_locx;
   int player_deltax;
   int key;
+
+  MapGenerator *map_generator;
 
   void PrintFrame(WINDOW *game_win, int player_locy, int player_locx);
   void UpdatePlayerLoc();

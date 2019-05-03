@@ -14,6 +14,8 @@ Game::Game(int height, int width, char player_icon)
   player_locx = (startx + width) / 2;
   player_deltax = 0;
 
+  // this->map_generator = MapGeneratorFactory::create();
+
   initscr();
   clear();
   noecho();
@@ -49,7 +51,7 @@ void Game::PlayGame()
 
     PrintFrame(game_win, player_locy, player_locx);
   }
-  // sleep_for(milliseconds(2000));
+
   // wclear(game_win);
   wrefresh(game_win);
   endwin();
@@ -62,7 +64,7 @@ void Game::PrintFrame(WINDOW *game_win, int player_locy, int player_locx)
   // wclear(game_win);
   mvwprintw(game_win, 15, 15, "player loc x is %d", player_locx);
   mvwprintw(game_win, player_locy, player_locx, "%c", player_icon);
-  // sleep_for(milliseconds(10));
+
   napms(1);
   wrefresh(game_win);
   
