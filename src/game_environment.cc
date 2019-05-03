@@ -7,6 +7,7 @@ namespace roadrun
     difficulty = SettingsItem::kRegular;
     main_menu = new MainMenu(kWidth, kHeight);
     settings_menu = new SettingsMenu(kWidth, kHeight);
+    game = new Game(kWidth, kHeight, '^');
   }
 
   GameEnvironment::~GameEnvironment()
@@ -29,7 +30,7 @@ namespace roadrun
       } 
       else if (meme == roadrun::MenuItem::kStartGame)
       {
-        // go don
+        
       }
       else 
       {

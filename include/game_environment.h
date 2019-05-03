@@ -8,6 +8,7 @@
 #include "settings_item.h"
 #include "main_menu.h"
 #include "settings_menu.h"
+#include "game.h"
 
 namespace roadrun
 {
@@ -21,7 +22,7 @@ private:
   SettingsItem difficulty;
   MainMenu *main_menu;
   SettingsMenu *settings_menu;
-  //Game game;
+  Game *game;
   const int kHeight = 10;
   const int kWidth = 20;
 };
