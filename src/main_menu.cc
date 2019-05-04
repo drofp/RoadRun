@@ -82,8 +82,11 @@ namespace roadrun
       RenderOptions(menu_win, highlight);
     }	
     // mvprintw(23, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
-    clrtoeol();
+    // clrtoeol();
+    wclear(menu_win);
+    clear();
     refresh();
+    wrefresh(menu_win);
     endwin();
   }
 

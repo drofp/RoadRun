@@ -23,8 +23,8 @@ private:
   MainMenu *main_menu;
   SettingsMenu *settings_menu;
   Game *game;
-  const int kHeight = 10;
-  const int kWidth = 20;
+  const int kMenuHeight = 10;
+  const int kMenuWidth = 20;
 };
 } // namespace roadrun
 #endif

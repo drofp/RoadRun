@@ -5,8 +5,11 @@ namespace roadrun
   GameEnvironment::GameEnvironment()
   {
     difficulty = SettingsItem::kRegular;
-    main_menu = new MainMenu(kWidth, kHeight);
-    settings_menu = new SettingsMenu(kWidth, kHeight);
+    main_menu = new MainMenu(kMenuWidth, kMenuHeight);
+    settings_menu = new SettingsMenu(kMenuWidth, kMenuHeight);
+
+    const int kHeight = 40;
+    const int kWidth = 80;
     game = new Game(kWidth, kHeight, '^');
   }
 
