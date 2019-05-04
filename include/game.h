@@ -6,6 +6,7 @@
 
 #include <ncurses.h>
 #include "map_generator_factory.h"
+#include "settings_item.h"
 
 using namespace std;
 
@@ -14,8 +15,8 @@ namespace roadrun
 class Game
 {
 public:
-  Game(int height, int width, char player_icon);
-  void PlayGame();
+  Game(int width, int height, char player_icon);
+  void PlayGame(SettingsItem difficulty);
 
   char GetPlayerIcon();
   void SetPlayerIcon();

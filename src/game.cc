@@ -2,7 +2,7 @@
 
 namespace roadrun
 {
-Game::Game(int height, int width, char player_icon)
+Game::Game(int width, int height, char player_icon)
 {
   int starty = 0;
   int startx = 0;
@@ -10,11 +10,9 @@ Game::Game(int height, int width, char player_icon)
   this->width = width;
 
   this->player_icon = player_icon;
-  player_locy = (starty + height) - 1;
+  player_locy = (starty + height) - 2;
   player_locx = (startx + width) / 2;
   player_deltax = 0;
-
-  // this->map_generator = MapGeneratorFactory::create();
 
   initscr();
   clear();
@@ -31,9 +29,10 @@ Game::Game(int height, int width, char player_icon)
   refresh();
 }
 
-void Game::PlayGame()
+void Game::PlayGame(SettingsItem difficulty)
 {
   bool playing = true;
+  this->map_generator = MapGeneratorFactory::create(difficulty);
 
   while (playing)
   {
@@ -60,8 +59,9 @@ void Game::PlayGame()
 void Game::PrintFrame(WINDOW *game_win, int player_locy, int player_locx)
 {
   wmove(game_win, player_locy, 0);
-  wclrtoeol(game_win);
-  // wclear(game_win);
+  // wclrtoeol(game_win);
+  wclear(game_win);
+  mvwprintw(game_win, 25, 25, "%s", map_generator->GenerateMap());
   mvwprintw(game_win, 15, 15, "player loc x is %d", player_locx);
   mvwprintw(game_win, player_locy, player_locx, "%c", player_icon);
 

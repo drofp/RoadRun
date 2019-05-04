@@ -4,6 +4,6 @@ namespace roadrun
 {
 char* MapGeneratorEasy::GenerateMap()
 {
-  return "";
+  return "easy";
 }
 } // namespace roadrun
