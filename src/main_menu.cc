@@ -74,7 +74,7 @@ namespace roadrun
         enter_pressed = 1;
         break;
       default:
-        mvprintw(24, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
+        // mvprintw(24, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
         refresh();
         break;
       }
