@@ -2,6 +2,7 @@
 #define MAP_GENERATOR_H_
 
 #include "string.h"
+#include <random>
 
 #include "dimensions.h"
 
@@ -11,7 +12,6 @@ class MapGenerator
 {
 public:
   virtual const char* GenerateMap(char * input) = 0;
-  static const int kRefreshRate = 0;
 };
 } // namespace roadrun
 

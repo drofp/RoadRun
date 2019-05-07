@@ -36,6 +36,7 @@ private:
   void PrintFrame(WINDOW *game_win, int player_locy, int player_locx);
   void UpdatePlayerLoc();
   void UpdatePlayerDeltas();
+  void CheckCollision();
   bool kbhit();
 };
 } // namespace roadrun
