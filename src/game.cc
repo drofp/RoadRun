@@ -60,7 +60,7 @@ void Game::PrintFrame(WINDOW *game_win, int player_locy, int player_locx)
   // wclrtoeol(game_win);
   wclear(game_win);
   mvwprintw(game_win, 0, 0, "%s", map_generator->GenerateMap(map));
-  mvwprintw(game_win, 25, 0, "player loc x is %d", player_locx);
+  // mvwprintw(game_win, 25, 0, "player loc x is %d", player_locx);
   mvwprintw(game_win, player_locy, player_locx, "%c", player_icon);
 
   napms(1);
