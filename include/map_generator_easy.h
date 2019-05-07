@@ -9,7 +9,7 @@ namespace roadrun
 class MapGeneratorEasy : public MapGenerator
 {
 public:
-  MapGeneratorEasy() : ticks(0), millis_per_frame(50), millis_per_rock(500) {}
+  MapGeneratorEasy() : ticks(0), millis_per_frame(100), millis_per_rock(500) {}
   const char* GenerateMap(char * map);
 private:
   int ticks;
