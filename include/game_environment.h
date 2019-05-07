@@ -9,6 +9,7 @@
 #include "main_menu.h"
 #include "settings_menu.h"
 #include "game.h"
+#include "dimensions.h"
 
 namespace roadrun
 {
@@ -23,8 +24,6 @@ private:
   MainMenu *main_menu;
   SettingsMenu *settings_menu;
   Game *game;
-  const int kMenuHeight = 10;
-  const int kMenuWidth = 20;
 };
 } // namespace roadrun
 #endif

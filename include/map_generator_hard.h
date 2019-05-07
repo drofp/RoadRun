@@ -8,7 +8,10 @@ namespace roadrun
 class MapGeneratorHard : public MapGenerator
 {
 public:
-  char* GenerateMap();
+  MapGeneratorHard() : ticks(0) { }
+  const char* GenerateMap(char * map);
+private:
+  int ticks;
 };
 } // namespace roadrun
 

@@ -2,7 +2,7 @@
 
 namespace roadrun
 {
-char* MapGeneratorHard::GenerateMap()
+const char* MapGeneratorHard::GenerateMap(char * map)
 {
   return "hard";
 }

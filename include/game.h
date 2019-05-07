@@ -7,6 +7,7 @@
 #include <ncurses.h>
 #include "map_generator_factory.h"
 #include "settings_item.h"
+#include "dimensions.h"
 
 using namespace std;
 
@@ -22,8 +23,7 @@ public:
   void SetPlayerIcon();
 private:
   WINDOW *game_win;
-  int height;
-  int width;
+  char map[(kMenuHeight * (kMenuWidth + 1)) + 1];
 
   char player_icon;
   int player_locy;
@@ -36,6 +36,7 @@ private:
   void PrintFrame(WINDOW *game_win, int player_locy, int player_locx);
   void UpdatePlayerLoc();
   void UpdatePlayerDeltas();
+  void CheckCollision();
   bool kbhit();
 };
 } // namespace roadrun
