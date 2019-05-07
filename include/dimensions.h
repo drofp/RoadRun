@@ -3,7 +3,7 @@
 
 namespace roadrun
 {
-const int kMenuHeight = 10;
-const int kMenuWidth = 20;
+const int kMenuHeight = 30;
+const int kMenuWidth = 61; // + 1 for newline character
 }
 #endif

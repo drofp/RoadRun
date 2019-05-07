@@ -6,8 +6,6 @@ Game::Game(int width, int height, char player_icon)
 {
   int starty = 0;
   int startx = 0;
-  this->height = height;
-  this->width = width;
 
   this->player_icon = player_icon;
   player_locy = (starty + height) - 2;
@@ -20,7 +18,7 @@ Game::Game(int width, int height, char player_icon)
   cbreak(); /* Line buffering disabled. pass on everything */
   curs_set(0); // hide cursor
 
-  game_win = newwin(height, width, starty, startx);
+  game_win = newwin(kMenuHeight, kMenuWidth, starty, startx);
   // cout << "newwin(height, width, starty, startx) = " << "(" << height << 
   //   ", " << width << ", " << starty << ", " << startx << ")" << endl;
   
@@ -61,8 +59,8 @@ void Game::PrintFrame(WINDOW *game_win, int player_locy, int player_locx)
   wmove(game_win, player_locy, 0);
   // wclrtoeol(game_win);
   wclear(game_win);
-  mvwprintw(game_win, 25, 25, "%s", map_generator->GenerateMap(map));
-  mvwprintw(game_win, 15, 15, "player loc x is %d", player_locx);
+  mvwprintw(game_win, 0, 0, "%s", map_generator->GenerateMap(map));
+  mvwprintw(game_win, 25, 0, "player loc x is %d", player_locx);
   mvwprintw(game_win, player_locy, player_locx, "%c", player_icon);
 
   napms(1);
@@ -73,7 +71,7 @@ void Game::UpdatePlayerLoc()
 {
   UpdatePlayerDeltas();
 
-  if (player_locx + player_deltax >= width || player_locx + player_deltax < 0)
+  if (player_locx + player_deltax >= kMenuWidth || player_locx + player_deltax < 0)
   {
     wmove(game_win, 21, 0);
     wclrtoeol(game_win);

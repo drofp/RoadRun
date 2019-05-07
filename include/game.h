@@ -7,6 +7,7 @@
 #include <ncurses.h>
 #include "map_generator_factory.h"
 #include "settings_item.h"
+#include "dimensions.h"
 
 using namespace std;
 
@@ -22,9 +23,6 @@ public:
   void SetPlayerIcon();
 private:
   WINDOW *game_win;
-  int height;
-  int width;
-
   char map[(kMenuHeight * (kMenuWidth + 1)) + 1];
 
   char player_icon;
