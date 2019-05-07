@@ -9,17 +9,13 @@
 #include "main_menu.h"
 #include "settings_menu.h"
 #include "game.h"
+#include "dimensions.h"
 
 namespace roadrun
 {
 class GameEnvironment
 {
 public:
-  // inline static constexpr int kMenuHeight = 10;
-  // inline static constexpr int kMenuWidth = 20;
-  int kMenuHeight = 10;
-  int kMenuWidth = 20;
-
   GameEnvironment();
   ~GameEnvironment();
   int PlayGame();

@@ -3,6 +3,8 @@
 
 #include "string.h"
 
+#include "dimensions.h"
+
 namespace roadrun
 {
 class MapGenerator

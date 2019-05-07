@@ -8,12 +8,9 @@ namespace roadrun
 class MapGeneratorHard : public MapGenerator
 {
 public:
-  MapGeneratorHard(int width, int height) : ticks(0), 
-    width(width), height(height) { }
+  MapGeneratorHard() : ticks(0) { }
   const char* GenerateMap(char * map);
 private:
-  int width;
-  int height;
   int ticks;
 };
 } // namespace roadrun

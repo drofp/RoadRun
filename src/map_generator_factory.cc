@@ -2,11 +2,11 @@
 
 namespace roadrun
 {
-MapGenerator* MapGeneratorFactory::create(SettingsItem difficulty, int width, int height)
+MapGenerator* MapGeneratorFactory::create(SettingsItem difficulty)
 {
   if (difficulty == SettingsItem::kRegular)
-   return new MapGeneratorEasy(width, height);
+   return new MapGeneratorEasy();
   else if (difficulty == SettingsItem::kLudicrous) 
-    return new MapGeneratorHard(width, height);
+    return new MapGeneratorHard();
 }
 } // namespace roadrun

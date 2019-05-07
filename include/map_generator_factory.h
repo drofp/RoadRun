@@ -13,7 +13,7 @@ namespace roadrun
 class MapGeneratorFactory
 {
 public:
-  static MapGenerator* create(SettingsItem difficulty, int width, int height);
+  static MapGenerator* create(SettingsItem difficulty);
 };
 } // namespace roadrun
 

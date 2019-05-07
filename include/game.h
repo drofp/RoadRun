@@ -25,6 +25,8 @@ private:
   int height;
   int width;
 
+  char map[(kMenuHeight * (kMenuWidth + 1)) + 1];
+
   char player_icon;
   int player_locy;
   int player_locx;

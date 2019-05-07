@@ -8,9 +8,7 @@ namespace roadrun
     main_menu = new MainMenu(kMenuWidth, kMenuHeight);
     settings_menu = new SettingsMenu(kMenuWidth, kMenuHeight);
 
-    const int kHeight = 40;
-    const int kWidth = 80;
-    game = new Game(kWidth, kHeight, '^');
+    game = new Game(kMenuWidth, kMenuHeight, '^');
   }
 
   GameEnvironment::~GameEnvironment()
