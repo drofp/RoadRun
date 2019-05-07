@@ -25,6 +25,7 @@ private:
   WINDOW *game_win;
   char map[(kMenuHeight * (kMenuWidth + 1)) + 1];
 
+  bool playing;
   char player_icon;
   int player_locy;
   int player_locx;

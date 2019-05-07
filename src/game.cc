@@ -7,6 +7,7 @@ Game::Game(int width, int height, char player_icon)
   int starty = 0;
   int startx = 0;
 
+  playing = true;
   this->player_icon = player_icon;
   player_locy = (starty + height) - 2;
   player_locx = (startx + width) / 2;
@@ -27,9 +28,9 @@ Game::Game(int width, int height, char player_icon)
   refresh();
 }
 
+// Returns true when done
 void Game::PlayGame(SettingsItem difficulty)
 {
-  bool playing = true;
   this->map_generator = MapGeneratorFactory::create(difficulty);
 
   while (playing)
@@ -60,8 +61,10 @@ void Game::PrintFrame(WINDOW *game_win, int player_locy, int player_locx)
   // wclrtoeol(game_win);
   wclear(game_win);
   mvwprintw(game_win, 0, 0, "%s", map_generator->GenerateMap(map));
-  // mvwprintw(game_win, 25, 0, "player loc x is %d", player_locx);
+  mvwprintw(game_win, 25, 0, "player loc x is %d", player_locx);
   mvwprintw(game_win, player_locy, player_locx, "%c", player_icon);
+
+  CheckCollision();
 
   napms(1);
   wrefresh(game_win);
@@ -73,15 +76,15 @@ void Game::UpdatePlayerLoc()
 
   if (player_locx + player_deltax >= kMenuWidth || player_locx + player_deltax < 0)
   {
-    wmove(game_win, 21, 0);
-    wclrtoeol(game_win);
-    mvwprintw(game_win, 21, 10, "entered! %d", player_deltax);
+    // wmove(game_win, 21, 0);
+    // wclrtoeol(game_win);
+    // mvwprintw(game_win, 21, 10, "entered! %d", player_deltax);
     player_deltax = 0;
   }
 
-  wmove(game_win, 20, 0);
-  wclrtoeol(game_win);
-  mvwprintw(game_win, 20, 10, "delta is: %d", player_deltax);
+  // wmove(game_win, 20, 0);
+  // wclrtoeol(game_win);
+  // mvwprintw(game_win, 20, 10, "delta is: %d", player_deltax);
   player_locx += player_deltax;
 }
 
@@ -108,5 +111,14 @@ void Game::UpdatePlayerDeltas()
     // wclrtoeol(game_win);
     // mvwprintw(game_win, 22, 10, "key NONE, delta: %d", player_deltax);
   }
+}
+
+void Game::CheckCollision()
+{
+  int player_loc = (player_locy * kMenuWidth) + player_locx;
+  // mvwprintw(game_win, 27, 0, "player loc is %c", map[player_loc]);
+
+  if (map[player_loc] == '*' || map[player_loc] == '#')
+    playing = false;
 }
 } // namespace roadrun

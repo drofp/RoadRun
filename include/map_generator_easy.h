@@ -9,11 +9,12 @@ namespace roadrun
 class MapGeneratorEasy : public MapGenerator
 {
 public:
-  MapGeneratorEasy() : ticks(0), millis_per_frame(50) { }
+  MapGeneratorEasy() : ticks(0), millis_per_frame(50), millis_per_rock(500) {}
   const char* GenerateMap(char * map);
 private:
   int ticks;
   int millis_per_frame;
+  int millis_per_rock;
   // int split_location;
 };
 } // namespace roadrun
