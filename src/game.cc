@@ -32,7 +32,7 @@ Game::Game(int width, int height, char player_icon)
 void Game::PlayGame(SettingsItem difficulty)
 {
   bool playing = true;
-  this->map_generator = MapGeneratorFactory::create(difficulty);
+  this->map_generator = MapGeneratorFactory::create(difficulty, width, height);
 
   while (playing)
   {

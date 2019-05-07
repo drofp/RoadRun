@@ -8,7 +8,8 @@ namespace roadrun
 class MapGenerator
 {
 public:
-  virtual char* GenerateMap() = 0;
+  virtual const char* GenerateMap(char * input) = 0;
+  static const int kRefreshRate = 0;
 };
 } // namespace roadrun
 

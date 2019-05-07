@@ -2,8 +2,9 @@
 
 namespace roadrun
 {
-char* MapGeneratorHard::GenerateMap()
+const char* MapGeneratorHard::GenerateMap(char * map)
 {
+  ticks = ticks > kRefreshRate ? 0 : ++ticks;
   return "hard";
 }
 } // namespace roadrun
