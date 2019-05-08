@@ -8,13 +8,10 @@ namespace roadrun
 class MapGeneratorEasy : public MapGenerator
 {
 public:
-  MapGeneratorEasy() : ticks(0), millis_per_frame(kMillisPerFrame),
-                        millis_per_rock(kMillisPerRock) {}
+  MapGeneratorEasy() : ticks(0) {}
   const char* GenerateMap(char* map);
 private:
   int ticks;
-  int millis_per_frame;
-  int millis_per_rock;
   // int split_location;
   void GenerateNewLine(char* new_line);
   void MoveLinesDown(char* game_map, char* new_line);

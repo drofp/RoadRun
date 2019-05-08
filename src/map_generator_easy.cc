@@ -51,7 +51,7 @@ void MapGeneratorEasy::GenerateNewLine(char* new_line)
   // }
 
   // Generate rocks with delay
-  if (ticks % millis_per_rock == 0)
+  if (ticks % kMillisPerRock == 0)
   {
     int i = (kMenuWidth - 1) / 3;
     while (i < 2 * (kMenuWidth - 1) / 3)
@@ -101,7 +101,7 @@ void MapGeneratorEasy::GenerateNewLine(char* new_line)
 // Starts replacing lines from the bottom up.
 void MapGeneratorEasy::MoveLinesDown(char* game_map, char* new_line)
 {
-  if (ticks % millis_per_frame == 0)
+  if (ticks % kMillisPerFrame == 0)
   {
     for (int j = kMenuHeight - 1; j > 0; j--) {
       for (int i = 0; i < kMenuWidth; i++) {
