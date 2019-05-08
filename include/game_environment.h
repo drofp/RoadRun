@@ -9,7 +9,7 @@
 #include "main_menu.h"
 #include "settings_menu.h"
 #include "game.h"
-#include "dimensions.h"
+#include "constants.h"
 
 namespace roadrun
 {

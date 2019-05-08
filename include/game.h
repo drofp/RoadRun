@@ -7,7 +7,7 @@
 #include <ncurses.h>
 #include "map_generator_factory.h"
 #include "settings_item.h"
-#include "dimensions.h"
+#include "constants.h"
 
 using namespace std;
 

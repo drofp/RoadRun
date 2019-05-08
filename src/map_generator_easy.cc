@@ -2,11 +2,9 @@
 
 namespace roadrun
 {
-const char* MapGeneratorEasy::GenerateMap(char * map)
-{
-  // Create new line to be inserted at top of map
-  char new_line[kMenuWidth];
 
+char* MapGeneratorEasy::GenerateNewLine(char* new_line)
+{
   // ===== left wall ===== //
   for (int i = 0; i < (kMenuWidth - 1) / 3; i++)
   {
@@ -86,8 +84,18 @@ const char* MapGeneratorEasy::GenerateMap(char * map)
 
   new_line[kMenuWidth - 1] = '\n';
 
+  return new_line;
+}
+
+const char* MapGeneratorEasy::GenerateMap(char* map)
+{
+  // Create new line to be inserted at top of map
+  char new_line[kMenuWidth];
+  GenerateNewLine(new_line);
+
   // Move all the current lines down by one row.
   // Start replacing lines from the bottom up.
+  
   if (ticks % millis_per_frame == 0)
   {
     for (int j = kMenuHeight - 1; j > 0; j--) {
@@ -95,12 +103,12 @@ const char* MapGeneratorEasy::GenerateMap(char * map)
         map[(j * kMenuWidth) + i] = map[((j - 1) * (kMenuWidth)) + i];
       }
     }
-  }
 
-  // Write the new line to the 0th line of map
-  for (int i = 0; i < kMenuWidth; i++)
-  {
-    map[i] = new_line[i]; 
+    // Write the new line to the 0th line of map
+    for (int i = 0; i < kMenuWidth; i++)
+    {
+      map[i] = new_line[i];
+    }
   }
 
   ticks = ticks > 20000 ? 0 : ++ticks;
