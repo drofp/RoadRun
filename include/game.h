@@ -7,7 +7,7 @@
 #include <ncurses.h>
 #include "map_generator_factory.h"
 #include "settings_item.h"
-#include "dimensions.h"
+#include "constants.h"
 
 using namespace std;
 
@@ -23,7 +23,8 @@ public:
   void SetPlayerIcon();
 private:
   WINDOW *game_win;
-  char map[(kMenuHeight * (kMenuWidth + 1)) + 1];
+  char game_map[(kMenuHeight * (kMenuWidth + 1)) + 1];
+  SettingsItem curr_difficulty;
 
   bool playing;
   char player_icon;

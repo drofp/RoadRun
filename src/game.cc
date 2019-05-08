@@ -31,7 +31,8 @@ Game::Game(int width, int height, char player_icon)
 // Returns true when done
 void Game::PlayGame(SettingsItem difficulty)
 {
-  this->map_generator = MapGeneratorFactory::create(difficulty);
+  curr_difficulty = difficulty;
+  this->map_generator = MapGeneratorFactory::create(curr_difficulty);
 
   while (playing)
   {
@@ -60,7 +61,7 @@ void Game::PrintFrame(WINDOW *game_win, int player_locy, int player_locx)
   wmove(game_win, player_locy, 0);
   // wclrtoeol(game_win);
   wclear(game_win);
-  mvwprintw(game_win, 0, 0, "%s", map_generator->GenerateMap(map));
+  mvwprintw(game_win, 0, 0, "%s", map_generator->GenerateMap(game_map));
   mvwprintw(game_win, 25, 0, "player loc x is %d", player_locx);
   mvwprintw(game_win, player_locy, player_locx, "%c", player_icon);
 
@@ -74,51 +75,41 @@ void Game::UpdatePlayerLoc()
 {
   UpdatePlayerDeltas();
 
-  if (player_locx + player_deltax >= kMenuWidth || player_locx + player_deltax < 0)
-  {
-    // wmove(game_win, 21, 0);
-    // wclrtoeol(game_win);
-    // mvwprintw(game_win, 21, 10, "entered! %d", player_deltax);
+  if (player_locx + player_deltax >= kMenuWidth 
+      || player_locx + player_deltax < 0)
     player_deltax = 0;
-  }
 
-  // wmove(game_win, 20, 0);
-  // wclrtoeol(game_win);
-  // mvwprintw(game_win, 20, 10, "delta is: %d", player_deltax);
   player_locx += player_deltax;
 }
 
 void Game::UpdatePlayerDeltas()
 {
-  if (key == KEY_LEFT)
+  if (curr_difficulty == SettingsItem::kRegular)
   {
-    player_deltax--;
-    // wmove(game_win, 22, 0);
-    // wclrtoeol(game_win);
-    // mvwprintw(game_win, 22, 10, "key LEFT, delta: %d", player_deltax);
+    if (key == KEY_LEFT)
+      player_deltax -= kDeltaEasy;
+    else if (key == KEY_RIGHT)
+      player_deltax += kDeltaEasy;
+    else
+      player_deltax = 0;
   }
-  else if (key == KEY_RIGHT)
+  else if (curr_difficulty == SettingsItem::kLudicrous)
   {
-    player_deltax++;
-    // wmove(game_win, 22, 0);
-    // wclrtoeol(game_win);
-    // mvwprintw(game_win, 22, 10, "key RIGHT, delta: %d", player_deltax);
-  }
-  else
-  {
-    player_deltax = 0;
-    // wmove(game_win, 22, 0);
-    // wclrtoeol(game_win);
-    // mvwprintw(game_win, 22, 10, "key NONE, delta: %d", player_deltax);
+    if (key == KEY_LEFT)
+      player_deltax -= kDeltaHard;
+    else if (key == KEY_RIGHT)
+      player_deltax += kDeltaHard;
+    else
+      player_deltax = 0;
   }
 }
 
 void Game::CheckCollision()
 {
   int player_loc = (player_locy * kMenuWidth) + player_locx;
-  // mvwprintw(game_win, 27, 0, "player loc is %c", map[player_loc]);
+  // mvwprintw(game_win, 27, 0, "player loc is %c", game_map[player_loc]);
 
-  if (map[player_loc] == '*' || map[player_loc] == '#')
+  if (game_map[player_loc] == '*' || game_map[player_loc] == '#')
     playing = false;
 }
 } // namespace roadrun

@@ -4,14 +4,14 @@
 #include "string.h"
 #include <random>
 
-#include "dimensions.h"
+#include "constants.h"
 
 namespace roadrun
 {
 class MapGenerator
 {
 public:
-  virtual const char* GenerateMap(char * input) = 0;
+  virtual const char* GenerateMap(char* input) = 0;
 };
 } // namespace roadrun
 
