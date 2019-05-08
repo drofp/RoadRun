@@ -7,6 +7,9 @@ namespace roadrun
     difficulty = SettingsItem::kRegular;
     main_menu = new MainMenu(kMenuWidth, kMenuHeight);
     settings_menu = new SettingsMenu(kMenuWidth, kMenuHeight);
+
+    high_score_easy = 0;
+    high_score_hard = 0;
   }
 
   GameEnvironment::~GameEnvironment()
@@ -29,8 +32,19 @@ namespace roadrun
       } 
       else if (meme == roadrun::MenuItem::kStartGame)
       {
-        game = new Game(kMenuWidth, kMenuHeight, '^');
-        game->PlayGame(difficulty);
+        if (difficulty == SettingsItem::kRegular)
+        {
+          game = new Game(kMenuWidth, kMenuHeight, '^', difficulty, 
+                          high_score_easy);
+          game->PlayGame();
+        }
+        else if (difficulty == SettingsItem::kLudicrous)
+        {
+          game = new Game(kMenuWidth, kMenuHeight, '^', difficulty, 
+                        high_score_hard);
+          game->PlayGame();
+        }
+
         delete game;
       }
       else 

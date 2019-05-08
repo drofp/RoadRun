@@ -24,6 +24,10 @@ private:
   MainMenu *main_menu;
   SettingsMenu *settings_menu;
   Game *game;
+
+
+  int *high_score_easy;
+  int *high_score_hard;
 };
 } // namespace roadrun
 #endif

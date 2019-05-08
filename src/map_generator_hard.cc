@@ -34,7 +34,7 @@ void MapGeneratorHard::GenerateNewLine(char* new_line)
     if(rand() % 3 == 0)
       new_line[i] = (char)'O';
     else
-      new_line[i] = (char)'X';
+      new_line[i] = (char)'#';
   }
   
   for (int i = split_location_left; i < split_location_right; i++)
@@ -45,7 +45,7 @@ void MapGeneratorHard::GenerateNewLine(char* new_line)
     if(rand() % 3 == 0)
       new_line[i] = (char)'O';
     else
-      new_line[i] = (char)'X';
+      new_line[i] = (char)'#';
   }
 }
 } // namespace roadrun
