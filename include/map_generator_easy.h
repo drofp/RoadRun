@@ -16,7 +16,8 @@ private:
   int millis_per_frame;
   int millis_per_rock;
   // int split_location;
-  char* GenerateNewLine(char* new_line);
+  void GenerateNewLine(char* new_line);
+  void MoveLinesDown(char* game_map, char* new_line);
 };
 } // namespace roadrun
 

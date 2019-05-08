@@ -60,7 +60,7 @@ void Game::PrintFrame(WINDOW *game_win, int player_locy, int player_locx)
   wmove(game_win, player_locy, 0);
   // wclrtoeol(game_win);
   wclear(game_win);
-  mvwprintw(game_win, 0, 0, "%s", map_generator->GenerateMap(map));
+  mvwprintw(game_win, 0, 0, "%s", map_generator->GenerateMap(game_map));
   mvwprintw(game_win, 25, 0, "player loc x is %d", player_locx);
   mvwprintw(game_win, player_locy, player_locx, "%c", player_icon);
 
@@ -116,9 +116,9 @@ void Game::UpdatePlayerDeltas()
 void Game::CheckCollision()
 {
   int player_loc = (player_locy * kMenuWidth) + player_locx;
-  // mvwprintw(game_win, 27, 0, "player loc is %c", map[player_loc]);
+  // mvwprintw(game_win, 27, 0, "player loc is %c", game_map[player_loc]);
 
-  if (map[player_loc] == '*' || map[player_loc] == '#')
+  if (game_map[player_loc] == '*' || game_map[player_loc] == '#')
     playing = false;
 }
 } // namespace roadrun

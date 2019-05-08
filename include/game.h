@@ -23,7 +23,7 @@ public:
   void SetPlayerIcon();
 private:
   WINDOW *game_win;
-  char map[(kMenuHeight * (kMenuWidth + 1)) + 1];
+  char game_map[(kMenuHeight * (kMenuWidth + 1)) + 1];
 
   bool playing;
   char player_icon;
