@@ -11,7 +11,7 @@ namespace roadrun
 class MapGenerator
 {
 public:
-  virtual const char* GenerateMap(char * input) = 0;
+  virtual const char* GenerateMap(char* input) = 0;
 };
 } // namespace roadrun
 

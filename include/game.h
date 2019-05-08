@@ -24,6 +24,7 @@ public:
 private:
   WINDOW *game_win;
   char game_map[(kMenuHeight * (kMenuWidth + 1)) + 1];
+  SettingsItem curr_difficulty;
 
   bool playing;
   char player_icon;
