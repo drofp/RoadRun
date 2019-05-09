@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <map>
 
 #include <ncurses.h>
 #include "map_generator_factory.h"
@@ -17,7 +18,7 @@ class Game
 {
 public:
   Game(int width, int height, char player_icon, SettingsItem difficulty,
-          int *curr_high_score);
+          map<SettingsItem, int*> difficulty_to_high_score);
   void PlayGame();
 
   char GetPlayerIcon();

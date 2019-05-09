@@ -3,6 +3,7 @@
 
 #include <termios.h>
 #include <iostream>
+#include <map>
 
 #include <ncurses.h>
 #include "settings_item.h"
@@ -25,9 +26,9 @@ private:
   SettingsMenu *settings_menu;
   Game *game;
 
-
-  int *high_score_easy;
-  int *high_score_hard;
+  map<SettingsItem, int*> difficulty_to_high_score;
+  // int *high_score_easy;
+  // int *high_score_hard;
 };
 } // namespace roadrun
 #endif

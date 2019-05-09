@@ -3,7 +3,7 @@
 namespace roadrun
 {
 Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
-            int *curr_high_score)
+            map<SettingsItem, int*> difficulty_to_high_score)
 {
   int starty = 0;
   int startx = 0;
@@ -15,7 +15,7 @@ Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
   player_deltax = 0;
 
   score_timer = 0;
-  this->curr_high_score = curr_high_score;
+  this->curr_high_score = difficulty_to_high_score[difficulty];
   curr_score = 0;
 
   curr_difficulty = difficulty;
@@ -76,7 +76,7 @@ void Game::PrintInfoFrame(WINDOW *info_win)
 
   UpdateScore();
   mvwprintw(info_win, 0, 0, "player loc x is %d", player_locx);
-  mvwprintw(info_win, 1, 0, "High score: %d", curr_high_score);
+  mvwprintw(info_win, 1, 0, "High score: %d", *curr_high_score);
   mvwprintw(info_win, 2, 0, "Score: %d", curr_score);
 
   wrefresh(info_win);
@@ -136,6 +136,12 @@ void Game::UpdateScore()
 
 void Game::UpdateHighScore()
 {
-  curr_high_score = &curr_score;
+  if (curr_score > *curr_high_score)
+    *curr_high_score = curr_score;
+  
+  wclear(info_win);
+  mvwprintw(info_win, 7, 0, "high score: %d", *curr_high_score);
+  wrefresh(info_win);
+  napms(1000);
 }
 } // namespace roadrun
