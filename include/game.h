@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <map>
+#include <unordered_map>
 
 #include <ncurses.h>
 #include "map_generator_factory.h"

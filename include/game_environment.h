@@ -4,6 +4,7 @@
 #include <termios.h>
 #include <iostream>
 #include <map>
+#include <unordered_map>
 
 #include <ncurses.h>
 #include "settings_item.h"
@@ -11,6 +12,8 @@
 #include "settings_menu.h"
 #include "game.h"
 #include "constants.h"
+
+using namespace std;
 
 namespace roadrun
 {
@@ -27,8 +30,8 @@ private:
   Game *game;
 
   map<SettingsItem, int*> difficulty_to_high_score;
-  // int *high_score_easy;
-  // int *high_score_hard;
+  int *high_score_easy;
+  int *high_score_hard;
 };
 } // namespace roadrun
 #endif

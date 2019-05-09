@@ -15,7 +15,7 @@ Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
   player_deltax = 0;
 
   score_timer = 0;
-  this->curr_high_score = difficulty_to_high_score[difficulty];
+  curr_high_score = difficulty_to_high_score[difficulty];
   curr_score = 0;
 
   curr_difficulty = difficulty;

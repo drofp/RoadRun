@@ -37,21 +37,28 @@ namespace roadrun
     endwin();
     refresh();
     WINDOW *menu_win;
+    
     int highlight = 1;
     int choice = 0;
     int c;
+
     initscr();
     clear();
     noecho();
     cbreak();
+    
     int startx = 5;//(80 - kWidth) / 2;
     int starty = 5;//(80 - kHeight) / 2;
+    
     menu_win = newwin(kHeight, kWidth, starty, startx);
+    
     keypad(menu_win, TRUE);
     mvprintw(0, 0, "Use ^ and v.");
     refresh();
     RenderOptions(menu_win, highlight);
+    
     int enter_pressed = 0;
+
     while(!enter_pressed)
     {
       c = wgetch(menu_win);
