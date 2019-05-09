@@ -24,6 +24,8 @@ public:
 
   char GetPlayerIcon();
   void SetPlayerIcon();
+
+  void PrintMap();
 private:
   WINDOW *game_win;
   WINDOW *info_win;
@@ -50,6 +52,9 @@ private:
   void CheckCollision();
   void UpdateScore();
   void UpdateHighScore();
+
+  map<SettingsItem, int*> themap;
+  
 };
 } // namespace roadrun
 
