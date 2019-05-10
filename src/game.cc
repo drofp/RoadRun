@@ -3,7 +3,8 @@
 namespace roadrun
 {
 Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
-            map<SettingsItem, int> &difficulty_to_high_score)
+            map<SettingsItem, int> &difficulty_to_high_score,
+            int &prev)
 {
   int starty = 0;
   int startx = 0;
@@ -19,7 +20,8 @@ Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
   difficulty_map = &difficulty_to_high_score;
   curr_score = 0;
 
-  
+  prev_score = &prev;
+
   // for (auto elm : difficulty_to_high_score)
   //   cout << "====== " << elm.first << " high score: " << elm.second << endl;
 
@@ -146,6 +148,9 @@ void Game::UpdateHighScore()
     curr_high_score = curr_score;
     difficulty_map->operator[](curr_difficulty) = curr_high_score;
   }
+
+  *prev_score = curr_score;
+
   wclear(info_win);
   mvwprintw(info_win, 7, 0, "high score: %d", curr_high_score);
   mvwprintw(info_win, 8, 0, "difficulty_map difficulty: %d", difficulty_map->at(curr_difficulty));

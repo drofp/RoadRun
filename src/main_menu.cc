@@ -49,8 +49,8 @@ namespace roadrun
     cbreak();
     curs_set(0);
     
-    int startx = 5;//(80 - kWidth) / 2;
-    int starty = 5;//(80 - kHeight) / 2;
+    int startx = 5; //(80 - kWidth) / 2;
+    int starty = 5; //(80 - kHeight) / 2;
     
     menu_win = newwin(kMenuHeight, kMenuWidth, starty, startx);
     info_win = newwin(kInfoHeight, kInfoWidth, starty, kMenuWidth+7);
@@ -60,8 +60,11 @@ namespace roadrun
     refresh();
     RenderOptions(menu_win, highlight);
     
-    mvwprintw(info_win, 0, 0, "Easy High Score: %d", difficulty_map->operator[](SettingsItem::kRegular));
-    mvwprintw(info_win, 1, 0, "Hard High Score: %d", difficulty_map->operator[](SettingsItem::kLudicrous));
+    mvwprintw(info_win, 0, 0, "Easy High Score: %d",
+                            difficulty_map->operator[](SettingsItem::kRegular));
+    mvwprintw(info_win, 1, 0, "Hard High Score: %d",
+                          difficulty_map->operator[](SettingsItem::kLudicrous));
+    mvwprintw(info_win, 2, 0, "Previous Score: %d", *prev_score);
     wrefresh(info_win);
 
     int enter_pressed = 0;

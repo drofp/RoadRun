@@ -30,8 +30,7 @@ private:
   Game *game;
 
   map<SettingsItem, int> difficulty_to_high_score;
-  int *high_score_easy;
-  int *high_score_hard;
+  int prev_score;
 };
 } // namespace roadrun
 #endif

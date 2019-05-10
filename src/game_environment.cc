@@ -4,8 +4,8 @@ namespace roadrun
 {
   GameEnvironment::GameEnvironment()
   {
-    int init_easy_score = 0;
-    int init_hard_score = 0;
+    // int init_easy_score = 0;
+    // int init_hard_score = 0;
 
     // high_score_easy = &init_easy_score;
     // high_score_hard = &init_hard_score;
@@ -23,7 +23,7 @@ namespace roadrun
     // napms(1000);
 
     difficulty = SettingsItem::kRegular;
-    main_menu = new MainMenu(difficulty_to_high_score);
+    main_menu = new MainMenu(difficulty_to_high_score, prev_score);
     settings_menu = new SettingsMenu(kMenuWidth, kMenuHeight);
   }
 
@@ -52,7 +52,7 @@ namespace roadrun
       else if (menu_choice == roadrun::MenuItem::kStartGame)
       {
         game = new Game(kMenuWidth, kMenuHeight, '^', difficulty, 
-                        difficulty_to_high_score);
+                        difficulty_to_high_score, prev_score);
         game->PlayGame();
         // cout << "difficulty to high score: " << difficulty_to_high_score[difficulty] << endl;
 
