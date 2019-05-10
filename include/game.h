@@ -19,7 +19,7 @@ class Game
 {
 public:
   Game(int width, int height, char player_icon, SettingsItem difficulty,
-          map<SettingsItem, int*> difficulty_to_high_score);
+          map<SettingsItem, int> &difficulty_to_high_score);
   void PlayGame();
 
   char GetPlayerIcon();
@@ -41,7 +41,7 @@ private:
   int key;
 
   int score_timer;
-  int *curr_high_score;
+  int curr_high_score;
   int curr_score;
 
   void PrintGameFrame(WINDOW *game_win);
@@ -53,7 +53,7 @@ private:
   void UpdateScore();
   void UpdateHighScore();
 
-  map<SettingsItem, int*> themap;
+  map<SettingsItem, int> *themap;
   
 };
 } // namespace roadrun

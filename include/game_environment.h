@@ -29,7 +29,7 @@ private:
   SettingsMenu *settings_menu;
   Game *game;
 
-  map<SettingsItem, int*> difficulty_to_high_score;
+  map<SettingsItem, int> difficulty_to_high_score;
   int *high_score_easy;
   int *high_score_hard;
 };

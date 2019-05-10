@@ -3,7 +3,7 @@
 namespace roadrun
 {
 Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
-            map<SettingsItem, int*> difficulty_to_high_score)
+            map<SettingsItem, int> &difficulty_to_high_score)
 {
   int starty = 0;
   int startx = 0;
@@ -16,12 +16,12 @@ Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
 
   score_timer = 0;
   curr_high_score = difficulty_to_high_score[difficulty];
-  themap = difficulty_to_high_score;
+  themap = &difficulty_to_high_score;
   curr_score = 0;
 
   
   for (auto elm : difficulty_to_high_score)
-    cout << "====== " << elm.first << " high score: " << *elm.second << endl;
+    cout << "====== " << elm.first << " high score: " << elm.second << endl;
 
   curr_difficulty = difficulty;
 
@@ -81,7 +81,7 @@ void Game::PrintInfoFrame(WINDOW *info_win)
 
   UpdateScore();
   mvwprintw(info_win, 0, 0, "player loc x is %d", player_locx);
-  mvwprintw(info_win, 1, 0, "High score: %d", *curr_high_score);
+  mvwprintw(info_win, 1, 0, "High score: %d", curr_high_score);
   mvwprintw(info_win, 2, 0, "Score: %d", curr_score);
 
   wrefresh(info_win);
@@ -141,12 +141,15 @@ void Game::UpdateScore()
 
 void Game::UpdateHighScore()
 {
-  if (curr_score > *curr_high_score)
-    *curr_high_score = curr_score;
-  
+  if (curr_score > curr_high_score)
+  {
+    curr_high_score = curr_score;
+    themap->operator[](curr_difficulty) = curr_high_score;
+  }
   wclear(info_win);
-  mvwprintw(info_win, 7, 0, "high score: %d", *curr_high_score);
-  mvwprintw(info_win, 8, 0, "themap difficulty: %d", *themap[curr_difficulty]);
+  mvwprintw(info_win, 7, 0, "high score: %d", curr_high_score);
+  mvwprintw(info_win, 8, 0, "themap difficulty: %d", themap->at(curr_difficulty));
+  cout << "difficulty is: " << curr_difficulty << endl;
   wrefresh(info_win);
   napms(1000);
 }
