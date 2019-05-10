@@ -91,15 +91,13 @@ namespace roadrun
         enter_pressed = 1;
         break;
       default:
-        // mvprintw(24, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
         refresh();
         break;
       }
       current_choice = menu_item_list[highlight - 1];
       RenderOptions(menu_win, highlight);
-    }	
-    // mvprintw(23, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
-    // clrtoeol();
+    }
+    
     wclear(menu_win);
     clear();
     refresh();
