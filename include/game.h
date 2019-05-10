@@ -53,8 +53,7 @@ private:
   void UpdateScore();
   void UpdateHighScore();
 
-  map<SettingsItem, int> *themap;
-  
+  map<SettingsItem, int> *difficulty_map;
 };
 } // namespace roadrun
 

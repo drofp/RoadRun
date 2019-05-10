@@ -37,6 +37,7 @@ namespace roadrun
     endwin();
     refresh();
     WINDOW *menu_win;
+    WINDOW *info_win;
     
     int highlight = 1;
     int choice = 0;
@@ -46,17 +47,23 @@ namespace roadrun
     clear();
     noecho();
     cbreak();
+    curs_set(0);
     
     int startx = 5;//(80 - kWidth) / 2;
     int starty = 5;//(80 - kHeight) / 2;
     
-    menu_win = newwin(kHeight, kWidth, starty, startx);
+    menu_win = newwin(kMenuHeight, kMenuWidth, starty, startx);
+    info_win = newwin(kInfoHeight, kInfoWidth, starty, kMenuWidth+7);
     
     keypad(menu_win, TRUE);
     mvprintw(0, 0, "Use ^ and v.");
     refresh();
     RenderOptions(menu_win, highlight);
     
+    mvwprintw(info_win, 0, 0, "Easy High Score: %d", difficulty_map->operator[](SettingsItem::kRegular));
+    mvwprintw(info_win, 1, 0, "Hard High Score: %d", difficulty_map->operator[](SettingsItem::kLudicrous));
+    wrefresh(info_win);
+
     int enter_pressed = 0;
 
     while(!enter_pressed)

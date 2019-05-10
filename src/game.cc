@@ -16,12 +16,12 @@ Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
 
   score_timer = 0;
   curr_high_score = difficulty_to_high_score[difficulty];
-  themap = &difficulty_to_high_score;
+  difficulty_map = &difficulty_to_high_score;
   curr_score = 0;
 
   
-  for (auto elm : difficulty_to_high_score)
-    cout << "====== " << elm.first << " high score: " << elm.second << endl;
+  // for (auto elm : difficulty_to_high_score)
+  //   cout << "====== " << elm.first << " high score: " << elm.second << endl;
 
   curr_difficulty = difficulty;
 
@@ -144,14 +144,14 @@ void Game::UpdateHighScore()
   if (curr_score > curr_high_score)
   {
     curr_high_score = curr_score;
-    themap->operator[](curr_difficulty) = curr_high_score;
+    difficulty_map->operator[](curr_difficulty) = curr_high_score;
   }
   wclear(info_win);
   mvwprintw(info_win, 7, 0, "high score: %d", curr_high_score);
-  mvwprintw(info_win, 8, 0, "themap difficulty: %d", themap->at(curr_difficulty));
-  cout << "difficulty is: " << curr_difficulty << endl;
+  mvwprintw(info_win, 8, 0, "difficulty_map difficulty: %d", difficulty_map->at(curr_difficulty));
+  // cout << "difficulty is: " << curr_difficulty << endl;
   wrefresh(info_win);
-  napms(1000);
+  // napms(1000);
 }
 
 } // namespace roadrun
