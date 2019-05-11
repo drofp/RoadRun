@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <map>
+#include <unordered_map>
 
 #include <ncurses.h>
 #include "map_generator_factory.h"
@@ -16,15 +18,21 @@ namespace roadrun
 class Game
 {
 public:
-  Game(int width, int height, char player_icon);
-  void PlayGame(SettingsItem difficulty);
+  Game(int width, int height, char player_icon, SettingsItem difficulty,
+          map<SettingsItem, int> &difficulty_to_high_score,
+          int &prev);
+  void PlayGame();
 
   char GetPlayerIcon();
   void SetPlayerIcon();
+
+  void PrintMap();
 private:
   WINDOW *game_win;
+  WINDOW *info_win;
   char game_map[(kMenuHeight * (kMenuWidth + 1)) + 1];
   SettingsItem curr_difficulty;
+  MapGenerator *map_generator;
 
   bool playing;
   char player_icon;
@@ -33,13 +41,21 @@ private:
   int player_deltax;
   int key;
 
-  MapGenerator *map_generator;
+  int score_timer;
+  int curr_high_score;
+  int curr_score;
 
-  void PrintFrame(WINDOW *game_win, int player_locy, int player_locx);
+  void PrintGameFrame(WINDOW *game_win);
+  void PrintInfoFrame(WINDOW *info_win);
+
   void UpdatePlayerLoc();
   void UpdatePlayerDeltas();
   void CheckCollision();
-  bool kbhit();
+  void UpdateScore();
+  void UpdateHighScore();
+
+  map<SettingsItem, int> *difficulty_map;
+  int *prev_score;
 };
 } // namespace roadrun
 

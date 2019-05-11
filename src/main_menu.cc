@@ -37,21 +37,38 @@ namespace roadrun
     endwin();
     refresh();
     WINDOW *menu_win;
+    WINDOW *info_win;
+    
     int highlight = 1;
     int choice = 0;
     int c;
+
     initscr();
     clear();
     noecho();
     cbreak();
-    int startx = 5;//(80 - kWidth) / 2;
-    int starty = 5;//(80 - kHeight) / 2;
-    menu_win = newwin(kHeight, kWidth, starty, startx);
+    curs_set(0);
+    
+    int startx = 5; //(80 - kWidth) / 2;
+    int starty = 5; //(80 - kHeight) / 2;
+    
+    menu_win = newwin(kMenuHeight, kMenuWidth, starty, startx);
+    info_win = newwin(kInfoHeight, kInfoWidth, starty, kMenuWidth+7);
+    
     keypad(menu_win, TRUE);
     mvprintw(0, 0, "Use ^ and v.");
     refresh();
     RenderOptions(menu_win, highlight);
+    
+    mvwprintw(info_win, 0, 0, "Easy High Score: %d",
+                            difficulty_map->operator[](SettingsItem::kRegular));
+    mvwprintw(info_win, 1, 0, "Hard High Score: %d",
+                          difficulty_map->operator[](SettingsItem::kLudicrous));
+    mvwprintw(info_win, 2, 0, "Previous Score: %d", *prev_score);
+    wrefresh(info_win);
+
     int enter_pressed = 0;
+
     while(!enter_pressed)
     {
       c = wgetch(menu_win);
@@ -74,15 +91,13 @@ namespace roadrun
         enter_pressed = 1;
         break;
       default:
-        // mvprintw(24, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
         refresh();
         break;
       }
       current_choice = menu_item_list[highlight - 1];
       RenderOptions(menu_win, highlight);
-    }	
-    // mvprintw(23, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
-    // clrtoeol();
+    }
+    
     wclear(menu_win);
     clear();
     refresh();

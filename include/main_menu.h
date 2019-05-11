@@ -1,23 +1,31 @@
 #ifndef MAIN_MENU_H_
 #define MAIN_MENU_H_
 
+#include <map>
+
 #include "menu.h"
 #include "menu_item.h"
+#include "settings_item.h"
+#include "constants.h"
 
-namespace roadrun 
+namespace roadrun
 {
 class MainMenu : public Menu<MenuItem>
 {
 public:
-  MainMenu(int width, int height) : current_choice(MenuItem::kStartGame),
-    kWidth(width), kHeight(height) { }
+  MainMenu(map<SettingsItem, int> &difficulty_to_high_score,
+           int &prev) : 
+                current_choice(MenuItem::kStartGame),
+                difficulty_map(&difficulty_to_high_score),
+                prev_score(&prev) {}
   void PrintMenu();
   MenuItem GetUserChoice();
 private:
   void RenderOptions(WINDOW *menu_win, int hightlight);
   MenuItem current_choice;
-  const int kWidth;
-  const int kHeight;
+
+  map<SettingsItem, int> *difficulty_map;
+  int *prev_score;
 };
 } // namespace roadrun
 

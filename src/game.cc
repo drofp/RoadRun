@@ -2,7 +2,9 @@
 
 namespace roadrun
 {
-Game::Game(int width, int height, char player_icon)
+Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
+            map<SettingsItem, int> &difficulty_to_high_score,
+            int &prev)
 {
   int starty = 0;
   int startx = 0;
@@ -13,62 +15,75 @@ Game::Game(int width, int height, char player_icon)
   player_locx = (startx + width) / 2;
   player_deltax = 0;
 
+  score_timer = 0;
+  curr_high_score = difficulty_to_high_score[difficulty];
+  difficulty_map = &difficulty_to_high_score;
+  curr_score = 0;
+
+  prev_score = &prev;
+
+  curr_difficulty = difficulty;
+
   initscr();
   clear();
   noecho();
-  cbreak(); /* Line buffering disabled. pass on everything */
+  cbreak(); // Line buffering disabled. pass on everything 
   curs_set(0); // hide cursor
 
   game_win = newwin(kMenuHeight, kMenuWidth, starty, startx);
-  // cout << "newwin(height, width, starty, startx) = " << "(" << height << 
-  //   ", " << width << ", " << starty << ", " << startx << ")" << endl;
-  
+  info_win = newwin(kInfoHeight, kInfoWidth, starty, kMenuWidth);
+
   nodelay(game_win, true);
   keypad(game_win, true);
   refresh();
 }
 
 // Returns true when done
-void Game::PlayGame(SettingsItem difficulty)
+void Game::PlayGame()
 {
-  curr_difficulty = difficulty;
   this->map_generator = MapGeneratorFactory::create(curr_difficulty);
 
   while (playing)
   {
-    // mvwprintw(game_win, 15, 15, "before key fetch");
-    // wrefresh(game_win);
-
     key = wgetch(game_win);
-
     playing = key == 'q' ? false : true;
-
-    // mvwprintw(game_win, 15, 15, "after key fetch");
-    // wrefresh(game_win);
 
     UpdatePlayerLoc();
 
-    PrintFrame(game_win, player_locy, player_locx);
+    PrintGameFrame(game_win);
+    PrintInfoFrame(info_win);
+    napms(1);
   }
 
-  // wclear(game_win);
+  UpdateHighScore();
+
   wrefresh(game_win);
+  wrefresh(info_win);
   endwin();
 }
 
-void Game::PrintFrame(WINDOW *game_win, int player_locy, int player_locx)
-{
-  wmove(game_win, player_locy, 0);
-  // wclrtoeol(game_win);
+void Game::PrintGameFrame(WINDOW *game_win)
+{  
   wclear(game_win);
+  
   mvwprintw(game_win, 0, 0, "%s", map_generator->GenerateMap(game_map));
-  mvwprintw(game_win, 25, 0, "player loc x is %d", player_locx);
   mvwprintw(game_win, player_locy, player_locx, "%c", player_icon);
 
   CheckCollision();
 
-  napms(1);
   wrefresh(game_win);
+}
+
+void Game::PrintInfoFrame(WINDOW *info_win)
+{
+  wclear(info_win);
+
+  UpdateScore();
+  mvwprintw(info_win, 0, 0, "player loc x is %d", player_locx);
+  mvwprintw(info_win, 1, 0, "High score: %d", curr_high_score);
+  mvwprintw(info_win, 2, 0, "Score: %d", curr_score);
+
+  wrefresh(info_win);
 }
 
 void Game::UpdatePlayerLoc()
@@ -107,9 +122,36 @@ void Game::UpdatePlayerDeltas()
 void Game::CheckCollision()
 {
   int player_loc = (player_locy * kMenuWidth) + player_locx;
-  // mvwprintw(game_win, 27, 0, "player loc is %c", game_map[player_loc]);
 
   if (game_map[player_loc] == '*' || game_map[player_loc] == '#')
     playing = false;
 }
+
+void Game::UpdateScore()
+{
+  score_timer++;
+
+  if (score_timer == kScoreTickCnt)
+  {
+    curr_score++;
+    score_timer = 0;
+  }
+}
+
+void Game::UpdateHighScore()
+{
+  if (curr_score > curr_high_score)
+    difficulty_map->operator[](curr_difficulty) = curr_score;
+  
+
+  *prev_score = curr_score;
+
+  wclear(info_win);
+  mvwprintw(info_win, 7, 0, "high score: %d", curr_high_score);
+  mvwprintw(info_win, 8, 0, "difficulty_map difficulty: %d", difficulty_map->at(curr_difficulty));
+  
+  wrefresh(info_win);
+  
+}
+
 } // namespace roadrun

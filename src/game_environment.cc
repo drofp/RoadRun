@@ -4,8 +4,11 @@ namespace roadrun
 {
   GameEnvironment::GameEnvironment()
   {
+    difficulty_to_high_score[SettingsItem::kRegular] = 0;
+    difficulty_to_high_score[SettingsItem::kLudicrous] = 0;
+
     difficulty = SettingsItem::kRegular;
-    main_menu = new MainMenu(kMenuWidth, kMenuHeight);
+    main_menu = new MainMenu(difficulty_to_high_score, prev_score);
     settings_menu = new SettingsMenu(kMenuWidth, kMenuHeight);
   }
 
@@ -20,18 +23,21 @@ namespace roadrun
     while(1)
     {
       main_menu->PrintMenu();
-      roadrun::MenuItem meme = main_menu->GetUserChoice();
+      roadrun::MenuItem menu_choice = main_menu->GetUserChoice();
 
-      if(meme == roadrun::MenuItem::kChooseDifficulty)
+      if(menu_choice == roadrun::MenuItem::kChooseDifficulty)
       {
         settings_menu->PrintMenu();
         difficulty = settings_menu->GetUserChoice();
       } 
-      else if (meme == roadrun::MenuItem::kStartGame)
+      else if (menu_choice == roadrun::MenuItem::kStartGame)
       {
-        game = new Game(kMenuWidth, kMenuHeight, '^');
-        game->PlayGame(difficulty);
+        game = new Game(kMenuWidth, kMenuHeight, '^', difficulty, 
+                        difficulty_to_high_score, prev_score);
+        game->PlayGame();
+
         delete game;
+
       }
       else 
       {

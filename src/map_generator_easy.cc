@@ -27,27 +27,6 @@ void MapGeneratorEasy::GenerateNewLine(char* new_line)
     else
       new_line[i] = (char)'#';
   }
-  
-  // Generate rocks without delay
-  // int i = (kMenuWidth - 1) / 3;
-  // while (i < 2 * (kMenuWidth - 1) / 3)
-  // {
-  //   int index = rand() % 20 + 19;
-  //   if (i == index)
-  //   {
-  //     /* 39 is max right, 20 is max left. we are 
-  //     getting a random place to put some rocks */
-  //     new_line[i] = (char)'*'; 
-  //     new_line[i + 1] = (char)'*';
-  //     new_line[i + 2] = (char)'*';
-  //     i += 3;
-  //   }
-  //   else
-  //   {
-  //     new_line[i] = (char)' ';
-  //     i++;
-  //   }
-  // }
 
   // Generate rocks with delay
   if (ticks % kMillisPerRock == 0)
