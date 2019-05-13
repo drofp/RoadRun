@@ -32,6 +32,7 @@ Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
 
   game_win = newwin(kMenuHeight, kMenuWidth, starty, startx);
   info_win = newwin(kInfoHeight, kInfoWidth, starty, kMenuWidth);
+  art_win = newwin(300, 300, starty, startx);
 
   nodelay(game_win, true);
   keypad(game_win, true);
@@ -42,7 +43,7 @@ Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
 void Game::PlayGame()
 {
   this->map_generator = MapGeneratorFactory::create(curr_difficulty);
-
+  PrintPrepScreen();
   while (playing)
   {
     key = wgetch(game_win);
@@ -59,6 +60,11 @@ void Game::PlayGame()
 
   wrefresh(game_win);
   wrefresh(info_win);
+  wclear(game_win);
+  wclear(info_win);
+  wrefresh(game_win);
+  wrefresh(info_win);
+  PrintEndScreen();
   endwin();
 }
 
@@ -84,6 +90,66 @@ void Game::PrintInfoFrame(WINDOW *info_win)
   mvwprintw(info_win, 2, 0, "Score: %d", curr_score);
 
   wrefresh(info_win);
+}
+
+void Game::PrintPrepScreen()
+{  
+  char* mode;
+  const char* kStartArt = R"ronmak(
+   / __ \___  ____ _____/ __  __   / /_____     / __ \____  ____ _____/ _______  ______  / /
+  / /_/ / _ \/ __ `/ __  / / / /  / __/ __ \   / /_/ / __ \/ __ `/ __  / ___/ / / / __ \/ / 
+ / _, _/  __/ /_/ / /_/ / /_/ /  / /_/ /_/ /  / _, _/ /_/ / /_/ / /_/ / /  / /_/ / / / /_/  
+/_/ |_|\___/\__,_/\__,_/\__, /   \__/\____/  /_/ |_|\____/\__,_/\__,_/_/   \__,_/_/ /_(_)   
+                       /____/                                                               
+              )ronmak";
+if(curr_difficulty == SettingsItem::kRegular)
+{
+
+  mode = R"ronmak(
+    ______                    __  ___          __   
+   / ________ ________  __   /  |/  ____  ____/ ___ 
+  / __/ / __ `/ ___/ / / /  / /|_/ / __ \/ __  / _ \
+ / /___/ /_/ (__  / /_/ /  / /  / / /_/ / /_/ /  __/
+/_____/\__,_/____/\__, /  /_/  /_/\____/\__,_/\___/ 
+                 /____/                             
+              )ronmak";
+}
+else
+{
+  mode = R"ronmak(
+    __  __               __   __  ___          __   
+   / / / ____ __________/ /  /  |/  ____  ____/ ___ 
+  / /_/ / __ `/ ___/ __  /  / /|_/ / __ \/ __  / _ \
+ / __  / /_/ / /  / /_/ /  / /  / / /_/ / /_/ /  __/
+/_/ /_/\__,_/_/   \__,_/  /_/  /_/\____/\__,_/\___/ 
+              )ronmak";
+}
+
+  mvwprintw(art_win, 0, 0, "%s", kStartArt);
+  mvwprintw(art_win, 10, 0, "%s", mode);
+  wrefresh(art_win);
+  napms(2000);
+  wmove(art_win, 0, 0);
+  wclrtobot(art_win);
+  wrefresh(art_win);
+}  
+
+void Game::PrintEndScreen()
+{
+
+  const char* kEndArt = R"ronmak(
+   ______                        ____                  __
+  / ________ _____ ___  ___     / __ \_   _____  _____/ /
+ / / __/ __ `/ __ `__ \/ _ \   / / / | | / / _ \/ ___/ / 
+/ /_/ / /_/ / / / / / /  __/  / /_/ /| |/ /  __/ /  /_/  
+\____/\__,_/_/ /_/ /_/\___/   \____/ |___/\___/_/  (_)   
+              )ronmak";
+  mvwprintw(art_win, 0, 0, "%s", kEndArt);
+  mvwprintw(art_win, 10, 0, "Your score was %d", curr_score);
+  wrefresh(art_win);
+  napms(2000);
+  wclrtobot(art_win);
+  wrefresh(art_win);
 }
 
 void Game::UpdatePlayerLoc()

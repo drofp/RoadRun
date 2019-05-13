@@ -2,6 +2,7 @@
 #define GAME_H_
 
 #include <stdio.h>
+#include <string>
 #include <iostream>
 #include <map>
 #include <unordered_map>
@@ -30,6 +31,7 @@ public:
 private:
   WINDOW *game_win;
   WINDOW *info_win;
+  WINDOW *art_win;
   char game_map[(kMenuHeight * (kMenuWidth + 1)) + 1];
   SettingsItem curr_difficulty;
   MapGenerator *map_generator;
@@ -47,6 +49,9 @@ private:
 
   void PrintGameFrame(WINDOW *game_win);
   void PrintInfoFrame(WINDOW *info_win);
+
+  void PrintPrepScreen();
+  void PrintEndScreen();
 
   void UpdatePlayerLoc();
   void UpdatePlayerDeltas();
