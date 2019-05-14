@@ -3,12 +3,18 @@ An obstacle avoidance game in C++ built with the NCurses library.
 
 ![](RoadRun_demo.gif)
 
-## How to Run
-Make sure [NCurses](https://invisible-island.net/ncurses/man/ncurses.3x.html) is [installed](https://www.cyberciti.biz/faq/linux-install-ncurses-library-headers-on-debian-ubuntu-centos-fedora/) with this commmand:
+## Prerequisites
+Make sure [NCurses](https://invisible-island.net/ncurses/man/ncurses.3x.html) is installed
+#### [On Ubuntu](https://www.cyberciti.biz/faq/linux-install-ncurses-library-headers-on-debian-ubuntu-centos-fedora/)
 ```
 sudo apt-get install libncurses5-dev libncursesw5-dev
 ```
-Compile and run with this command:
+#### [On Mac with Homebrew](https://formulae.brew.sh/formula/ncurses)
+```
+brew install ncurses
+```
+
+## How to Run
 ```
 make run
 ```
