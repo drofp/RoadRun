@@ -14,7 +14,6 @@ enum class SettingsItem
   kLudicrous
 };
 
-
 static const SettingsItem settings_item_list[] =
 {
   SettingsItem::kRegular,

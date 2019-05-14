@@ -6,7 +6,6 @@ namespace roadrun
 {
   void SettingsMenu::RenderOptions(WINDOW *menu_win, int highlight)
   {
-
     mvwprintw(menu_win, 2, 4, "Choose a Difficulty");
     char *choices[] = { 
         "Regular Mode",

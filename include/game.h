@@ -47,8 +47,8 @@ private:
   int curr_high_score;
   int curr_score;
 
-  void PrintGameFrame(WINDOW *game_win);
-  void PrintInfoFrame(WINDOW *info_win);
+  void PrintGameFrame();
+  void PrintInfoFrame();
 
   void PrintPrepScreen();
   void PrintEndScreen();
