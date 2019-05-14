@@ -88,6 +88,7 @@ void Game::PrintInfoFrame(WINDOW *info_win)
   mvwprintw(info_win, 0, 0, "player loc x is %d", player_locx);
   mvwprintw(info_win, 1, 0, "High score: %d", curr_high_score);
   mvwprintw(info_win, 2, 0, "Score: %d", curr_score);
+  mvwprintw(info_win, 3, 0, "Press 'q' at any time to quit");
 
   wrefresh(info_win);
 }
