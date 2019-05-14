@@ -7,13 +7,14 @@ namespace roadrun
   void SettingsMenu::RenderOptions(WINDOW *menu_win, int highlight)
   {
 
+    mvwprintw(menu_win, 2, 4, "Choose a Difficulty");
     char *choices[] = { 
         "Regular Mode",
         "Ludicrous Mode",
         "Ron Mak",
     };
     int x, y, i;
-    x = y = 2;
+    x = y = 4;
     box(menu_win, 0,0);
     for(i = 0; i < num_settings_items; i++) {
       if(highlight == i + 1)
@@ -48,7 +49,7 @@ namespace roadrun
     int starty = 5;//(80 - kHeight) / 2;
     menu_win = newwin(kHeight, kWidth, starty, startx);
     keypad(menu_win, TRUE);
-    mvprintw(0, 0, "Use ^ and v.");
+    mvprintw(0, 0, "Use up and down arrows to choose, enter to select.");
     refresh();
     RenderOptions(menu_win, highlight);
     int enter_pressed = 0;
