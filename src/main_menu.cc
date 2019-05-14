@@ -6,14 +6,14 @@ namespace roadrun
 {
   void MainMenu::RenderOptions(WINDOW *menu_win, int highlight)
   {
-
+    mvwprintw(menu_win, 2, 4, "Main Menu");
     char *choices[] = { 
         "Play Game",
         "Options",
         "Exit",
     };
     int x, y, i;
-    x = y = 2;
+    x = y = 4;
     box(menu_win, 0,0);
     for(i = 0; i < num_menu_items; i++) {
       if(highlight == i + 1)
@@ -28,7 +28,7 @@ namespace roadrun
       }
       ++y;
     }
-  wrefresh(menu_win);
+    wrefresh(menu_win);
   }
 
   void MainMenu::PrintMenu()
@@ -53,18 +53,25 @@ namespace roadrun
     int starty = 5; //(80 - kHeight) / 2;
     
     menu_win = newwin(kMenuHeight, kMenuWidth, starty, startx);
-    info_win = newwin(kInfoHeight, kInfoWidth, starty, kMenuWidth+7);
+    info_win = newwin(kInfoHeight, kMenuWidth, starty, kMenuWidth+7);
     
     keypad(menu_win, TRUE);
-    mvprintw(0, 0, "Use ^ and v.");
+    mvprintw(0, 0, "Use up and down arrows to choose, enter to select.");
+    mvwprintw(info_win, 0, 0, R"ronmak(
+    ____                  ______            
+   / __ \____  ____ _____/ / __ \__  ______ 
+  / /_/ / __ \/ __ `/ __  / /_/ / / / / __ \
+ / _, _/ /_/ / /_/ / /_/ / _, _/ /_/ / / / /
+/_/ |_|\____/\__,_/\__,_/_/ |_|\__,_/_/ /_/ 
+              )ronmak");
     refresh();
     RenderOptions(menu_win, highlight);
     
-    mvwprintw(info_win, 0, 0, "Easy High Score: %d",
+    mvwprintw(info_win, 7, 0, "Easy High Score: %d",
                             difficulty_map->operator[](SettingsItem::kRegular));
-    mvwprintw(info_win, 1, 0, "Hard High Score: %d",
+    mvwprintw(info_win, 8, 0, "Hard High Score: %d",
                           difficulty_map->operator[](SettingsItem::kLudicrous));
-    mvwprintw(info_win, 2, 0, "Previous Score: %d", *prev_score);
+    mvwprintw(info_win, 9, 0, "Previous Score: %d", *prev_score);
     wrefresh(info_win);
 
     int enter_pressed = 0;
