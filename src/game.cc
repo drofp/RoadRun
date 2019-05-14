@@ -51,8 +51,8 @@ void Game::PlayGame()
 
     UpdatePlayerLoc();
 
-    PrintGameFrame(game_win);
-    PrintInfoFrame(info_win);
+    PrintGameFrame();
+    PrintInfoFrame();
     napms(1);
   }
 
@@ -68,7 +68,7 @@ void Game::PlayGame()
   endwin();
 }
 
-void Game::PrintGameFrame(WINDOW *game_win)
+void Game::PrintGameFrame()
 {  
   wclear(game_win);
   
@@ -80,7 +80,7 @@ void Game::PrintGameFrame(WINDOW *game_win)
   wrefresh(game_win);
 }
 
-void Game::PrintInfoFrame(WINDOW *info_win)
+void Game::PrintInfoFrame()
 {
   wclear(info_win);
 
