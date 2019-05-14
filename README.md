@@ -1,5 +1,5 @@
 # RoadRun
-An obstacle avoidance game in C++ using object oriented design principles.
+An obstacle avoidance game in C++ built with the NCurses library.
 
 ![](RoadRun_demo.gif)
 
