@@ -57,6 +57,10 @@ namespace roadrun
     
     keypad(menu_win, TRUE);
     mvprintw(0, 0, "Use up and down arrows to choose, enter to select.");
+    mvprintw(1, 0, "==================================================");
+    mvprintw(2, 0, "To play: Press left and right arrow keys to move.");
+    mvprintw(3, 0, "         Dodge the obstacles as long as you can!");
+    mvprintw(4, 0, "Your Character: ^");
     mvwprintw(info_win, 0, 0, R"ronmak(
     ____                  ______            
    / __ \____  ____ _____/ / __ \__  ______ 
