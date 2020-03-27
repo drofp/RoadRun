@@ -1,7 +1,8 @@
 # RoadRun
 An obstacle avoidance game in C++ built with the NCurses library.
 
-![](RoadRun_demo.gif)
+![RoadRun_demo](https://user-images.githubusercontent.com/36345325/77796572-c9848a80-702c-11ea-8cc4-9ef02ea9e871.gif)
+
 
 ## Prerequisites
 Make sure [NCurses](https://invisible-island.net/ncurses/man/ncurses.3x.html) is installed
