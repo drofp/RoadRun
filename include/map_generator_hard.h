@@ -17,6 +17,9 @@ private:
   int split_location_left;
   int split_location_right;
   void GenerateNewLine(char* new_line);
+  void GenerateWall(roadrun::WallSide wall_side,
+                    char* new_line,
+                    int wall_edge);
 };
 } // namespace roadrun
 

@@ -19,5 +19,10 @@ const int kScoreTickCnt = 100;
 // Movement
 const int kDeltaEasy = 1;
 const int kDeltaHard = 3;
+enum WallSide
+{
+  kLeft = 0,
+  kRight = 1
+};
 }
 #endif

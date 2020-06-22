@@ -18,6 +18,31 @@ const char* MapGeneratorHard::GenerateMap(char* game_map)
   return game_map;
 }
 
+void MapGeneratorHard::GenerateWall(roadrun::WallSide wall_side,
+                                    char* new_line,
+                                    int wall_edge)
+{
+  int lower_limit, upper_limit;
+  if (wall_side == roadrun::WallSide::kLeft)
+  {
+    lower_limit = 0;
+    upper_limit = wall_edge;
+  }
+  else
+  {
+    lower_limit = wall_edge;
+    upper_limit = kMenuWidth - 1;
+  }
+
+  for (int i = lower_limit; i < upper_limit; i++)
+  {
+    if (rand() % 3 == 0)
+      new_line[i] = (char)'D';
+    else
+      new_line[i] = (char)'#';
+  }
+}
+
 void MapGeneratorHard::GenerateNewLine(char* new_line)
 {
   int wall_shift = rand() % 2 == 0 ? -1 : 1;
@@ -29,23 +54,11 @@ void MapGeneratorHard::GenerateNewLine(char* new_line)
     split_location_right += wall_shift;
   }
 
-  for (int i = 0; i < split_location_left; i++)
-  {
-    if(rand() % 3 == 0)
-      new_line[i] = (char)'O';
-    else
-      new_line[i] = (char)'#';
-  }
-  
+  GenerateWall(roadrun::WallSide::kLeft, new_line, split_location_left);
+
   for (int i = split_location_left; i < split_location_right; i++)
     new_line[i] = (char)' ';
 
-  for (int i = split_location_right; i < kMenuWidth; i++)
-  {
-    if(rand() % 3 == 0)
-      new_line[i] = (char)'O';
-    else
-      new_line[i] = (char)'#';
-  }
+  GenerateWall(roadrun::WallSide::kRight, new_line, split_location_right);
 }
 } // namespace roadrun
