@@ -17,16 +17,34 @@ const char* MapGeneratorEasy::GenerateMap(char* game_map)
   return game_map;
 }
 
-void MapGeneratorEasy::GenerateNewLine(char* new_line)
+void MapGeneratorEasy::GenerateWall(roadrun::WallSide wall_side,
+                                    char* new_line)
 {
-  // Generate left wall
-  for (int i = 0; i < (kMenuWidth - 1) / 3; i++)
+  int lower_limit, upper_limit;
+  if (wall_side == roadrun::WallSide::kLeft)
   {
-    if(rand() % 3 == 0)
+    lower_limit = 0;
+    upper_limit = (kMenuWidth - 1) / 3;
+  }
+  else
+  {
+    lower_limit = 2 * (kMenuWidth - 1) / 3;
+    upper_limit = kMenuWidth - 1;
+  }
+
+  for (int i = lower_limit; i < upper_limit; i++)
+  {
+    if (rand() % 3 == 0)
       new_line[i] = (char)'D';
     else
       new_line[i] = (char)'#';
   }
+}
+
+void MapGeneratorEasy::GenerateNewLine(char* new_line)
+{
+  // Generate left wall
+  GenerateWall(roadrun::WallSide::kLeft, new_line);
 
   // Generate rocks with delay
   if (ticks % kMillisPerRock == 0)
@@ -60,13 +78,7 @@ void MapGeneratorEasy::GenerateNewLine(char* new_line)
   }
   
   // Generate right wall
-  for (int i = 2 * (kMenuWidth - 1) / 3; i < (kMenuWidth - 1); i++)
-  { 
-    if(rand() % 3 == 0)
-      new_line[i] = (char)'D';
-    else
-      new_line[i] = (char)'#';
-  }
+  GenerateWall(roadrun::WallSide::kRight, new_line);
 
   new_line[kMenuWidth - 1] = '\n';
 }

@@ -14,6 +14,8 @@ public:
 private:
   int ticks;
   void GenerateNewLine(char* new_line);
+  void GenerateWall(roadrun::WallSide wall_side,
+                    char* new_line);
 };
 } // namespace roadrun
 
