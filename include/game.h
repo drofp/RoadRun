@@ -32,7 +32,7 @@ private:
   WINDOW *game_win;
   WINDOW *info_win;
   WINDOW *art_win;
-  char game_map[(kMenuHeight * (kMenuWidth + 1)) + 1];
+  char game_map[(kMenuHeight * (kMenuWidth + 1)) + 1] = "";
   SettingsItem curr_difficulty;
   MapGenerator *map_generator;
 
