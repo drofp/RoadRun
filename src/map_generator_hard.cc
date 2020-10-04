@@ -46,7 +46,7 @@ void MapGeneratorHard::GenerateWall(roadrun::WallSide wall_side,
 void MapGeneratorHard::GenerateNewLine(char* new_line)
 {
   int wall_shift = rand() % 2 == 0 ? -1 : 1;
-  
+
   if (split_location_right + wall_shift < kMenuWidth
       && split_location_left + wall_shift > 0)
   {

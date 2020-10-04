@@ -24,5 +24,5 @@ enum WallSide
   kLeft = 0,
   kRight = 1
 };
-}
+}  // namespace roadrun
 #endif

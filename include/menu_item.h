@@ -3,8 +3,6 @@
 
 #include <ostream>
 
-using namespace std;
-
 namespace roadrun
 {
 enum class MenuItem
@@ -23,7 +21,8 @@ static const MenuItem menu_item_list[] =
 static const int num_menu_items = 3;
 } // namespace roadrun
 
-inline ostream &operator<<(ostream &ostr, const roadrun::MenuItem option)
+inline std::ostream &operator<<(std::ostream &ostr,
+                                const roadrun::MenuItem option)
 {
   switch (option)
   {
@@ -42,7 +41,6 @@ inline ostream &operator<<(ostream &ostr, const roadrun::MenuItem option)
   }
   return ostr;
 }
-
 
 inline char* MenuItemToString(char **arr, roadrun::MenuItem choice)
 {

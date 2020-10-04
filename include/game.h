@@ -12,8 +12,6 @@
 #include "settings_item.h"
 #include "constants.h"
 
-using namespace std;
-
 namespace roadrun
 {
 class Game

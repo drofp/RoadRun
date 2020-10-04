@@ -55,7 +55,7 @@ void MapGeneratorEasy::GenerateNewLine(char* new_line)
     {
       if (i == index)
       {
-        /* 39 is max right, 20 is max left. we are 
+        /* 39 is max right, 20 is max left. we are
         getting a random place to put some rocks */
         new_line[i] = (char)'*';
         new_line[i + 1] = (char)'*';
@@ -72,11 +72,11 @@ void MapGeneratorEasy::GenerateNewLine(char* new_line)
   else
   {
     for (int i = (kMenuWidth - 1) / 3; i < 2 * (kMenuWidth - 1) / 3; i++)
-    { 
+    {
       new_line[i] = (char)' ';
-    } 
+    }
   }
-  
+
   // Generate right wall
   GenerateWall(roadrun::WallSide::kRight, new_line);
 
