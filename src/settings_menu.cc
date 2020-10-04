@@ -17,12 +17,14 @@ namespace roadrun
       if(highlight == i + 1)
       {
         wattron(menu_win, A_REVERSE);
-        mvwprintw(menu_win, y, x, "%s", SettingToString(choices, settings_item_list[i]));
+        mvwprintw(menu_win, y, x, "%s",
+                  SettingToString(choices, settings_item_list[i]));
         wattroff(menu_win, A_REVERSE);
       }
       else
       {
-        mvwprintw(menu_win, y, x, "%s", SettingToString(choices, settings_item_list[i]));
+        mvwprintw(menu_win, y, x, "%s",
+                  SettingToString(choices, settings_item_list[i]));
       }
       ++y;
     }
@@ -31,7 +33,6 @@ namespace roadrun
 
   void SettingsMenu::PrintMenu()
   {
-
     endwin();
     refresh();
     WINDOW *menu_win;
