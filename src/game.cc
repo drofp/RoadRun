@@ -66,9 +66,6 @@ void Game::PlayGame()
   PrintEndScreen();
   endwin();
   delete map_generator;
-  delete game_win;
-  delete info_win;
-  delete art_win;
 }
 
 void Game::PrintGameFrame()
