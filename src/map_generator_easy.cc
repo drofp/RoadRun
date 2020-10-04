@@ -82,4 +82,4 @@ void MapGeneratorEasy::GenerateNewLine(char* new_line)
 
   new_line[kMenuWidth - 1] = '\n';
 }
-} // namespace roadrun
+}  // namespace roadrun

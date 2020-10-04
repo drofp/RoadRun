@@ -3,7 +3,7 @@
 namespace roadrun
 {
 Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
-            map<SettingsItem, int> &difficulty_to_high_score,
+            std::map<SettingsItem, int> &difficulty_to_high_score,
             int &prev)
 {
   int starty = 0;
@@ -221,4 +221,4 @@ void Game::UpdateHighScore()
 
 }
 
-} // namespace roadrun
+}  // namespace roadrun

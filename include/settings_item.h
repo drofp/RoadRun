@@ -4,8 +4,6 @@
 #include "string.h"
 #include <ostream>
 
-using namespace std;
-
 namespace roadrun
 {
 enum class SettingsItem
@@ -20,9 +18,10 @@ static const SettingsItem settings_item_list[] =
   SettingsItem::kLudicrous
 };
 static const int num_settings_items = 2;
-} // namespace roadrun
+}  // namespace roadrun
 
-inline ostream &operator<<(ostream &ostr, const roadrun::SettingsItem option)
+inline std::ostream &operator<<(std::ostream &ostr,
+                                const roadrun::SettingsItem option)
 {
   switch (option)
   {

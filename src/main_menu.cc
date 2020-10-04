@@ -1,7 +1,5 @@
 #include "main_menu.h"
 
-using namespace std;
-
 namespace roadrun
 {
   void MainMenu::RenderOptions(WINDOW *menu_win, int highlight)
@@ -120,4 +118,4 @@ namespace roadrun
   {
     return current_choice;
   }
-} // namespace roadrun
+}  // namespace roadrun

@@ -20,5 +20,5 @@ public:
 private:
   virtual void RenderOptions(WINDOW *menu_win, int highlight) = 0;
 };
-} // namespace roadrun
+}  // namespace roadrun
 #endif

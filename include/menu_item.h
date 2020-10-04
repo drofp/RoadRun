@@ -19,7 +19,7 @@ static const MenuItem menu_item_list[] =
   MenuItem::kExit
 };
 static const int num_menu_items = 3;
-} // namespace roadrun
+}  // namespace roadrun
 
 inline std::ostream &operator<<(std::ostream &ostr,
                                 const roadrun::MenuItem option)

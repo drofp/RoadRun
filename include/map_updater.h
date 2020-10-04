@@ -10,6 +10,6 @@ class MapUpdater
 public:
   static void MoveLinesDown(int ticks, char* game_map, char* new_line);
 };
-} // namespace roadrun
+}  // namespace roadrun
 
 #endif

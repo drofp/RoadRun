@@ -61,4 +61,4 @@ void MapGeneratorHard::GenerateNewLine(char* new_line)
 
   GenerateWall(roadrun::WallSide::kRight, new_line, split_location_right);
 }
-} // namespace roadrun
+}  // namespace roadrun

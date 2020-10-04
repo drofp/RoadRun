@@ -18,4 +18,4 @@ void MapUpdater::MoveLinesDown(int ticks, char* game_map, char* new_line)
     game_map[i] = new_line[i];
   }
 }
-} // namespace roadrun
+}  // namespace roadrun

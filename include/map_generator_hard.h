@@ -21,6 +21,6 @@ private:
                     char* new_line,
                     int wall_edge);
 };
-} // namespace roadrun
+}  // namespace roadrun
 
 #endif

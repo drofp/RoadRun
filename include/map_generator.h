@@ -13,6 +13,6 @@ class MapGenerator
 public:
   virtual const char* GenerateMap(char* input) = 0;
 };
-} // namespace roadrun
+}  // namespace roadrun
 
 #endif

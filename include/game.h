@@ -18,7 +18,7 @@ class Game
 {
 public:
   Game(int width, int height, char player_icon, SettingsItem difficulty,
-          map<SettingsItem, int> &difficulty_to_high_score,
+          std::map<SettingsItem, int> &difficulty_to_high_score,
           int &prev);
   void PlayGame();
 
@@ -57,9 +57,9 @@ private:
   void UpdateScore();
   void UpdateHighScore();
 
-  map<SettingsItem, int> *difficulty_map;
+  std::map<SettingsItem, int> *difficulty_map;
   int *prev_score;
 };
-} // namespace roadrun
+}  // namespace roadrun
 
 #endif

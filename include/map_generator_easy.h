@@ -17,6 +17,6 @@ private:
   void GenerateWall(roadrun::WallSide wall_side,
                     char* new_line);
 };
-} // namespace roadrun
+}  // namespace roadrun
 
 #endif
