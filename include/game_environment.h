@@ -13,8 +13,6 @@
 #include "game.h"
 #include "constants.h"
 
-using namespace std;
-
 namespace roadrun
 {
 class GameEnvironment
