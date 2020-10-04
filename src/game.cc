@@ -27,7 +27,7 @@ Game::Game(int width, int height, char player_icon, SettingsItem difficulty,
   initscr();
   clear();
   noecho();
-  cbreak(); // Line buffering disabled. pass on everything 
+  cbreak(); // Line buffering disabled. pass on everything
   curs_set(0); // hide cursor
 
   game_win = newwin(kMenuHeight, kMenuWidth, starty, startx);
@@ -50,7 +50,6 @@ void Game::PlayGame()
     playing = key == 'q' ? false : true;
 
     UpdatePlayerLoc();
-
     PrintGameFrame();
     PrintInfoFrame();
     napms(1);
@@ -66,12 +65,13 @@ void Game::PlayGame()
   wrefresh(info_win);
   PrintEndScreen();
   endwin();
+  delete map_generator;
 }
 
 void Game::PrintGameFrame()
-{  
+{
   wclear(game_win);
-  
+
   mvwprintw(game_win, 0, 0, "%s", map_generator->GenerateMap(game_map));
   mvwprintw(game_win, player_locy, player_locx, "%c", player_icon);
 
@@ -94,35 +94,35 @@ void Game::PrintInfoFrame()
 }
 
 void Game::PrintPrepScreen()
-{  
+{
   char* mode;
   const char* kStartArt = R"ronmak(
    / __ \___  ____ _____/ __  __   / /_____     / __ \____  ____ _____/ _______  ______  / /
-  / /_/ / _ \/ __ `/ __  / / / /  / __/ __ \   / /_/ / __ \/ __ `/ __  / ___/ / / / __ \/ / 
- / _, _/  __/ /_/ / /_/ / /_/ /  / /_/ /_/ /  / _, _/ /_/ / /_/ / /_/ / /  / /_/ / / / /_/  
-/_/ |_|\___/\__,_/\__,_/\__, /   \__/\____/  /_/ |_|\____/\__,_/\__,_/_/   \__,_/_/ /_(_)   
-                       /____/                                                               
+  / /_/ / _ \/ __ `/ __  / / / /  / __/ __ \   / /_/ / __ \/ __ `/ __  / ___/ / / / __ \/ /
+ / _, _/  __/ /_/ / /_/ / /_/ /  / /_/ /_/ /  / _, _/ /_/ / /_/ / /_/ / /  / /_/ / / / /_/
+/_/ |_|\___/\__,_/\__,_/\__, /   \__/\____/  /_/ |_|\____/\__,_/\__,_/_/   \__,_/_/ /_(_)
+                       /____/
               )ronmak";
 if(curr_difficulty == SettingsItem::kRegular)
 {
 
   mode = R"ronmak(
-    ______                    __  ___          __   
-   / ________ ________  __   /  |/  ____  ____/ ___ 
+    ______                    __  ___          __
+   / ________ ________  __   /  |/  ____  ____/ ___
   / __/ / __ `/ ___/ / / /  / /|_/ / __ \/ __  / _ \
  / /___/ /_/ (__  / /_/ /  / /  / / /_/ / /_/ /  __/
-/_____/\__,_/____/\__, /  /_/  /_/\____/\__,_/\___/ 
-                 /____/                             
+/_____/\__,_/____/\__, /  /_/  /_/\____/\__,_/\___/
+                 /____/
               )ronmak";
 }
 else
 {
   mode = R"ronmak(
-    __  __               __   __  ___          __   
-   / / / ____ __________/ /  /  |/  ____  ____/ ___ 
+    __  __               __   __  ___          __
+   / / / ____ __________/ /  /  |/  ____  ____/ ___
   / /_/ / __ `/ ___/ __  /  / /|_/ / __ \/ __  / _ \
  / __  / /_/ / /  / /_/ /  / /  / / /_/ / /_/ /  __/
-/_/ /_/\__,_/_/   \__,_/  /_/  /_/\____/\__,_/\___/ 
+/_/ /_/\__,_/_/   \__,_/  /_/  /_/\____/\__,_/\___/
               )ronmak";
 }
 
@@ -133,7 +133,7 @@ else
   wmove(art_win, 0, 0);
   wclrtobot(art_win);
   wrefresh(art_win);
-}  
+}
 
 void Game::PrintEndScreen()
 {
@@ -141,9 +141,9 @@ void Game::PrintEndScreen()
   const char* kEndArt = R"ronmak(
    ______                        ____                  __
   / ________ _____ ___  ___     / __ \_   _____  _____/ /
- / / __/ __ `/ __ `__ \/ _ \   / / / | | / / _ \/ ___/ / 
-/ /_/ / /_/ / / / / / /  __/  / /_/ /| |/ /  __/ /  /_/  
-\____/\__,_/_/ /_/ /_/\___/   \____/ |___/\___/_/  (_)   
+ / / __/ __ `/ __ `__ \/ _ \   / / / | | / / _ \/ ___/ /
+/ /_/ / /_/ / / / / / /  __/  / /_/ /| |/ /  __/ /  /_/
+\____/\__,_/_/ /_/ /_/\___/   \____/ |___/\___/_/  (_)
               )ronmak";
   mvwprintw(art_win, 0, 0, "%s", kEndArt);
   mvwprintw(art_win, 10, 0, "Your score was %d", curr_score);
@@ -157,7 +157,7 @@ void Game::UpdatePlayerLoc()
 {
   UpdatePlayerDeltas();
 
-  if (player_locx + player_deltax >= kMenuWidth 
+  if (player_locx + player_deltax >= kMenuWidth
       || player_locx + player_deltax < 0)
     player_deltax = 0;
 
@@ -209,16 +209,16 @@ void Game::UpdateHighScore()
 {
   if (curr_score > curr_high_score)
     difficulty_map->operator[](curr_difficulty) = curr_score;
-  
+
 
   *prev_score = curr_score;
 
   wclear(info_win);
   mvwprintw(info_win, 7, 0, "high score: %d", curr_high_score);
   mvwprintw(info_win, 8, 0, "difficulty_map difficulty: %d", difficulty_map->at(curr_difficulty));
-  
+
   wrefresh(info_win);
-  
+
 }
 
 } // namespace roadrun
