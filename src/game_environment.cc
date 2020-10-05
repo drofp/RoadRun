@@ -1,4 +1,5 @@
 #include "game_environment.h"
+#include "color_handler.h"
 
 namespace roadrun
 {
