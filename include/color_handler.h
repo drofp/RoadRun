@@ -16,14 +16,15 @@ const int kColorWhite = COLOR_WHITE;
 class ColorHandler {
  public:
   static void InitializeColorPairs();
-  static void PrintColor(int y, int x, const char* str, int color_pair);
-  static void PrintRed(int y, int x, const char* str);
-  static void PrintGreen(int y, int x, const char* str);
-  static void PrintYellow(int y, int x, const char* str);
-  static void PrintBlue(int y, int x, const char* str);
-  static void PrintMagenta(int y, int x, const char* str);
-  static void PrintCyan(int y, int x, const char* str);
-  static void PrintWhite(int y, int x, const char* str);
+  static void PrintColor(WINDOW* window, int y, int x, const char* str,
+                         int color_pair, ...);
+  static void PrintRed(WINDOW* window, int y, int x, const char* str, ...);
+  static void PrintGreen(WINDOW* window, int y, int x, const char* str, ...);
+  static void PrintYellow(WINDOW* window, int y, int x, const char* str, ...);
+  static void PrintBlue(WINDOW* window, int y, int x, const char* str, ...);
+  static void PrintMagenta(WINDOW* window, int y, int x, const char* str, ...);
+  static void PrintCyan(WINDOW* window, int y, int x, const char* str, ...);
+  static void PrintWhite(WINDOW* window, int y, int x, const char* str, ...);
 };
 }  // namespace roadrun
 

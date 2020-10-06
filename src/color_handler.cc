@@ -10,30 +10,38 @@ void ColorHandler::InitializeColorPairs() {
   init_pair(kColorCyan, COLOR_CYAN, COLOR_BLACK);
   init_pair(kColorWhite, COLOR_WHITE, COLOR_BLACK);
 }
-void ColorHandler::PrintColor(int y, int x, const char* str, int color_pair) {
+void ColorHandler::PrintColor(WINDOW* window, int y, int x, const char* str,
+                              int color_pair, ...) {
   attron(COLOR_PAIR(color_pair));
-  mvprintw(y, x, str);
+  mvwprintw(window, y, x, str);
   attroff(COLOR_PAIR(color_pair));
 }
-void ColorHandler::PrintRed(int y, int x, const char* str) {
-  PrintColor(y, x, str, kColorRed);
+void ColorHandler::PrintRed(WINDOW* window, int y, int x, const char* str,
+                            ...) {
+  PrintColor(window, y, x, str, kColorRed);
 }
-void ColorHandler::PrintGreen(int y, int x, const char* str) {
-  PrintColor(y, x, str, kColorGreen);
+void ColorHandler::PrintGreen(WINDOW* window, int y, int x, const char* str,
+                              ...) {
+  PrintColor(window, y, x, str, kColorGreen);
 }
-void ColorHandler::PrintYellow(int y, int x, const char* str) {
-  PrintColor(y, x, str, kColorYellow);
+void ColorHandler::PrintYellow(WINDOW* window, int y, int x, const char* str,
+                               ...) {
+  PrintColor(window, y, x, str, kColorYellow);
 }
-void ColorHandler::PrintBlue(int y, int x, const char* str) {
-  PrintColor(y, x, str, kColorBlue);
+void ColorHandler::PrintBlue(WINDOW* window, int y, int x, const char* str,
+                             ...) {
+  PrintColor(window, y, x, str, kColorBlue);
 }
-void ColorHandler::PrintMagenta(int y, int x, const char* str) {
-  PrintColor(y, x, str, kColorMagenta);
+void ColorHandler::PrintMagenta(WINDOW* window, int y, int x, const char* str,
+                                ...) {
+  PrintColor(window, y, x, str, kColorMagenta);
 }
-void ColorHandler::PrintCyan(int y, int x, const char* str) {
-  PrintColor(y, x, str, kColorCyan);
+void ColorHandler::PrintCyan(WINDOW* window, int y, int x, const char* str,
+                             ...) {
+  PrintColor(window, y, x, str, kColorCyan);
 }
-void ColorHandler::PrintWhite(int y, int x, const char* str) {
-  PrintColor(y, x, str, kColorWhite);
+void ColorHandler::PrintWhite(WINDOW* window, int y, int x, const char* str,
+                              ...) {
+  PrintColor(window, y, x, str, kColorWhite);
 }
 }  // namespace roadrun

@@ -21,6 +21,7 @@ namespace roadrun
 
   int GameEnvironment::PlayGame()
   {
+    ColorHandler::InitializeColorPairs();
     while(1)
     {
       main_menu->PrintMenu();

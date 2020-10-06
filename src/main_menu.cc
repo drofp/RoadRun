@@ -1,4 +1,5 @@
 #include "main_menu.h"
+#include "color_handler.h"
 
 using namespace std;
 
@@ -21,10 +22,10 @@ namespace roadrun
         wattron(menu_win, A_REVERSE);
         mvwprintw(menu_win, y, x, "%s", MenuItemToString(choices, menu_item_list[i]));
         wattroff(menu_win, A_REVERSE);
-      }
-      else
-      {
-        mvwprintw(menu_win, y, x, "%s", MenuItemToString(choices, menu_item_list[i]));
+      } else {
+        ColorHandler::PrintGreen(menu_win, y, x, "%s",
+                                 MenuItemToString(choices, menu_item_list[i]));
+        // mvwprintw(menu_win, y, x, "%s", MenuItemToString(choices, menu_item_list[i]));
       }
       ++y;
     }
