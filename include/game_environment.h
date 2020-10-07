@@ -13,8 +13,6 @@
 #include "game.h"
 #include "constants.h"
 
-using namespace std;
-
 namespace roadrun
 {
 class GameEnvironment
@@ -29,8 +27,8 @@ private:
   SettingsMenu *settings_menu;
   Game *game;
 
-  map<SettingsItem, int> difficulty_to_high_score;
+  std::map<SettingsItem, int> difficulty_to_high_score;
   int prev_score;
 };
-} // namespace roadrun
+}  // namespace roadrun
 #endif

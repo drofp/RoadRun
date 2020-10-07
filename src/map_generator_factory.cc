@@ -6,7 +6,7 @@ MapGenerator* MapGeneratorFactory::create(SettingsItem difficulty)
 {
   if (difficulty == SettingsItem::kRegular)
    return new MapGeneratorEasy();
-  else if (difficulty == SettingsItem::kLudicrous) 
+  else if (difficulty == SettingsItem::kLudicrous)
     return new MapGeneratorHard();
 }
-} // namespace roadrun
+}  // namespace roadrun

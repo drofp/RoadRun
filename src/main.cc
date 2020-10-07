@@ -1,10 +1,10 @@
 #include "game_environment.h"
 
-int main() 
+int main()
 {
-  roadrun::GameEnvironment *game = new roadrun::GameEnvironment();
-  game->PlayGame();
+  roadrun::GameEnvironment *game_environment = new roadrun::GameEnvironment();
+  game_environment->PlayGame();
 
-  delete game;
+  delete game_environment;
   return 0;
 }

@@ -29,22 +29,22 @@ namespace roadrun
       {
         settings_menu->PrintMenu();
         difficulty = settings_menu->GetUserChoice();
-      } 
+      }
       else if (menu_choice == roadrun::MenuItem::kStartGame)
       {
-        game = new Game(kMenuWidth, kMenuHeight, '^', difficulty, 
+        game = new Game(kMenuWidth, kMenuHeight, '^', difficulty,
                         difficulty_to_high_score, prev_score);
         game->PlayGame();
 
         delete game;
 
       }
-      else 
+      else
       {
         break;
       }
     }
     return 0;
   }
-} // namespace roadrun
+}  // namespace roadrun
 

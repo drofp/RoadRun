@@ -4,13 +4,13 @@
 #include "menu.h"
 #include "settings_item.h"
 
-namespace roadrun 
+namespace roadrun
 {
 class SettingsMenu : public Menu<SettingsItem>
 {
 public:
   SettingsMenu(int width, int height) : current_choice(SettingsItem::kRegular),
-  kWidth(width), kHeight(height) { }
+                                        kWidth(width), kHeight(height) { }
   void PrintMenu();
   SettingsItem GetUserChoice();
 private:
@@ -19,6 +19,6 @@ private:
   const int kWidth;
   const int kHeight;
 };
-} // namespace roadrun
+}  // namespace roadrun
 
 #endif

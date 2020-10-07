@@ -15,6 +15,6 @@ class MapGeneratorFactory
 public:
   static MapGenerator* create(SettingsItem difficulty);
 };
-} // namespace roadrun
+}  // namespace roadrun
 
 #endif

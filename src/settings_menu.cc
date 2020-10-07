@@ -1,13 +1,11 @@
 #include "settings_menu.h"
 
-using namespace std;
-
 namespace roadrun
 {
   void SettingsMenu::RenderOptions(WINDOW *menu_win, int highlight)
   {
     mvwprintw(menu_win, 2, 4, "Choose a Difficulty");
-    char *choices[] = { 
+    char *choices[] = {
         "Regular Mode",
         "Ludicrous Mode",
         "Ron Mak",
@@ -19,12 +17,14 @@ namespace roadrun
       if(highlight == i + 1)
       {
         wattron(menu_win, A_REVERSE);
-        mvwprintw(menu_win, y, x, "%s", SettingToString(choices, settings_item_list[i]));
+        mvwprintw(menu_win, y, x, "%s",
+                  SettingToString(choices, settings_item_list[i]));
         wattroff(menu_win, A_REVERSE);
       }
       else
       {
-        mvwprintw(menu_win, y, x, "%s", SettingToString(choices, settings_item_list[i]));
+        mvwprintw(menu_win, y, x, "%s",
+                  SettingToString(choices, settings_item_list[i]));
       }
       ++y;
     }
@@ -33,7 +33,6 @@ namespace roadrun
 
   void SettingsMenu::PrintMenu()
   {
-
     endwin();
     refresh();
     WINDOW *menu_win;
@@ -44,8 +43,8 @@ namespace roadrun
     clear();
     noecho();
     cbreak();
-    int startx = 5;//(80 - kWidth) / 2;
-    int starty = 5;//(80 - kHeight) / 2;
+    int startx = 5;  // (80 - kWidth) / 2;
+    int starty = 5;  // (80 - kHeight) / 2;
     menu_win = newwin(kHeight, kWidth, starty, startx);
     keypad(menu_win, TRUE);
     mvprintw(0, 0, "Use up and down arrows to choose, enter to select.");
@@ -66,7 +65,7 @@ namespace roadrun
       case KEY_DOWN:
         if(highlight == 2)
           highlight = 1;
-        else 
+        else
           ++highlight;
         break;
       case 10:
@@ -91,4 +90,4 @@ namespace roadrun
   {
     return current_choice;
   }
-} // namespace roadrun
+}  // namespace roadrun

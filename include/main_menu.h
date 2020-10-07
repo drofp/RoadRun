@@ -13,8 +13,7 @@ namespace roadrun
 class MainMenu : public Menu<MenuItem>
 {
 public:
-  MainMenu(map<SettingsItem, int> &difficulty_to_high_score,
-           int &prev) : 
+  MainMenu(std::map<SettingsItem, int> &difficulty_to_high_score, int &prev) :
                 current_choice(MenuItem::kStartGame),
                 difficulty_map(&difficulty_to_high_score),
                 prev_score(&prev) {}
@@ -24,9 +23,9 @@ private:
   void RenderOptions(WINDOW *menu_win, int hightlight);
   MenuItem current_choice;
 
-  map<SettingsItem, int> *difficulty_map;
+  std::map<SettingsItem, int> *difficulty_map;
   int *prev_score;
 };
-} // namespace roadrun
+}  // namespace roadrun
 
 #endif
